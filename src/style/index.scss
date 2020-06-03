@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: #ffffff;
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  color: #000000;
+  font-size: 14px;
+}
+
+li[ls-none] {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.theme {
+  background-color: #409eff !important;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+[hidden] {
+  display: none;
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.lineH-no {
+  line-height: normal;
+}
+
+.ct {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#nprogress .bar {
+  background: #409eff !important;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0,width=device-width
+    ,viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="Keywords" content="vue,示列,项目" />
+  <meta name="Description" content="vue示列项目，集合了Vue项目中用到的Api、公共JS、打包开发|测试|生产、公共组件..." />
+  <link rel="shortcut icon" href="" type="image/x-icon" />
+  <title></title>
+  <style>
+    .mainLogo {
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      top: 40%;
+      font-style: italic;
+      background: transparent;
+      color: #efefef;
+      font-weight: bold;
+      font-family: "AlexaFont";
+      font-size: 60px;
+    }
+
+    .mainLogo::after {
+      content: " ";
+      position: absolute;
+      left: 0px;
+      top: 0;
+      width: 2px;
+      height: 200px;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      transform-origin: top;
+      background-color: #ffffff;
+      -webkit-animation: mymove 2s infinite;
+      animation: mymove 2s infinite;
+    }
+
+    @-webkit-keyframes mymove {
+      from {
+        left: 0;
+      }
+
+      to {
+        left: -webkit-calc(100% + 42px);
+        left: calc(100% + 42px);
+      }
+    }
+
+    @keyframes mymove {
+      from {
+        left: 0;
+      }
+
+      to {
+        left: -webkit-calc(100% + 42px);
+        left: calc(100% + 42px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="mainLogo">
+    vue_demo
+  </div>
+  <% htmlWebpackPlugin.options.cdnConfig.externalConfig.forEach(function(item){ if(item.js ){ %>
+  <script type="text/javascript" src="<%= htmlWebpackPlugin.options.cdnConfig.cdnBaseHttp + '/' + item.js %>"></script>
+  <% }}) %>
+</body>
+
+</html>
