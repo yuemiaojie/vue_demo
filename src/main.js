@@ -13,6 +13,9 @@ import { Loading, Message } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+// import Mock from 'mockjs'
+// console.log()
+
 NProgress.configure({ showSpinner: false })
 
 Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
