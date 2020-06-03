@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import loadingComponent from '@components/loading'
+import loadingComponent from '@components/Loading'
 
 /**
  * 使用Vue构造器，创建一个子类

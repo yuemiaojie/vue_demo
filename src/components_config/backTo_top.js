@@ -1,4 +1,4 @@
-import toTopComponent from '@components/backTo_top'
+import toTopComponent from '@components/BackToTop'
 
 // 添加install方法
 toTopComponent.install = function (Vue) {

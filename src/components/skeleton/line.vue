@@ -1,22 +1,22 @@
 <template>
-  <div :class="'line ' + className">
-  </div>
+  <div :class="'line ' + className" />
 </template>
 
 <script type="text/javascript">
 export default {
   name: '',
+  components: {},
   props: {
     className: {
-      type: String
+      type: String,
+      default: ''
     }
   },
-  components: {},
   data() {
     return {}
   },
-  created() {},
-  mounted() {},
+  created() { },
+  mounted() { },
   methods: {}
 }
 </script>

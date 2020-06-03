@@ -1,22 +1,22 @@
 <template>
-  <div :class="'cir ' + className">
-  </div>
+  <div :class="'cir ' + className" />
 </template>
 
 <script type="text/javascript">
 export default {
   name: '',
+  components: {},
   props: {
     className: {
-      type: String
+      type: String,
+      default: ''
     }
   },
-  components: {},
   data() {
     return {}
   },
-  created() {},
-  mounted() {},
+  created() { },
+  mounted() { },
   methods: {}
 }
 </script>

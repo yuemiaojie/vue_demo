@@ -1,10 +1,21 @@
 <template>
   <div class="file_wrap">
-    <div class="file_items" v-for="(v, i) in fileList" :key="v.id" :style="'backgroundImage: url(' + v.src + ')'" @click="opFiles(i)">
-    </div>
+    <div
+      v-for="(v, i) in fileList"
+      :key="v.id"
+      :style="'backgroundImage: url(' + v.src + ')'"
+      class="file_items"
+      @click="opFiles(i)"
+    />
 
     <div class="fileBox">
-      <input type="file" ref="file" id="file" @change="fileChange" multiple>
+      <input
+        id="file"
+        ref="file"
+        type="file"
+        multiple
+        @change="fileChange"
+      >
     </div>
   </div>
 </template>
@@ -15,6 +26,7 @@ import utils from '@/utils'
 
 export default {
   name: '',
+  components: {},
   props: {
     fileSize: {
       type: Number,
@@ -27,7 +39,6 @@ export default {
       }
     }
   },
-  components: {},
   data() {
     return {
       fileFormatReg: /^(\s|\S)+(jpg|png|JPG|PNG|jpeg|gif|wbmp|JPEG)+$/,
@@ -38,7 +49,7 @@ export default {
   mounted() { },
   methods: {
     async fileChange() {
-      let fileList = this.$refs['file'].files
+      const fileList = this.$refs['file'].files
       for (let index = 0; index < fileList.length; index++) {
         var fileInput = fileList[index]
 
@@ -60,14 +71,14 @@ export default {
         }
 
         // 配置
-        let client = new OSS(utils.OSSCli())
-        let fileStorageName = utils.getFileName(fileInput.name)
-        let relativePath = 'img/'
-        let fileStorageSrc = relativePath + fileStorageName
-        let data = await client.put(fileStorageSrc, fileInput)
+        const client = new OSS(utils.OSSCli())
+        const fileStorageName = utils.getFileName(fileInput.name)
+        const relativePath = 'img/'
+        const fileStorageSrc = relativePath + fileStorageName
+        const data = await client.put(fileStorageSrc, fileInput)
 
         // 返回
-        let { res } = data
+        const { res } = data
         console.log(data)
 
         console.log(res.requestUrls[0])
