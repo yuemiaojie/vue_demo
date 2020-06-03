@@ -12,12 +12,12 @@ export function changeThemeColor(newColor) {
   return client.changer.changeColor(options, Promise)
     .then(() => {
       curColor = newColor
-      localStorage.setItem('theme_color', curColor)
+      localStorage.setItem('themeColor', curColor)
     })
 }
 
 export function initThemeColor() {
-  const savedColor = localStorage.getItem('theme_color')
+  const savedColor = localStorage.getItem('themeColor')
   if (savedColor) {
     curColor = savedColor
     changeThemeColor(savedColor)

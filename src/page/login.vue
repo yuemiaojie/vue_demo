@@ -132,7 +132,7 @@ export default {
   text-decoration: underline;
 }
 .content {
-  background-color: #409eff;
+  background-color: var(--color);
   padding: 70px 0 120px;
   border-radius: 10px;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);

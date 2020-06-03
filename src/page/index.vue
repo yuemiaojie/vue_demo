@@ -33,7 +33,8 @@ export default {
       timer: false
     }
   },
-  created() { },
+  created() {
+  },
   mounted() {
     this.setWinH()
     window.addEventListener('resize', this.listenResize)

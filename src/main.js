@@ -5,7 +5,6 @@ import store from '@/store/index.js'
 import api from './api'
 import './style/index.scss'
 import backToTop from '@/components_config/backTo_top'
-import { appThemeColor } from '@/assets/js/appThemeColor'
 import * as filters from '@/filters/filters'
 import utils from '@utils'
 import cookie from 'js-cookie'
@@ -13,6 +12,7 @@ import { Loading, Message } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import '@assets/css/theme.scss'
 // import Mock from 'mockjs'
 // console.log()
 
@@ -58,7 +58,6 @@ router.afterEach((to, from) => {
 Vue.use(backToTop)
 
 // 绑定全局
-Vue.prototype.$appThemeColor = appThemeColor
 Vue.prototype.$api = api
 Vue.prototype.$utils = utils
 Vue.prototype.$msg = opt => Message(opt)

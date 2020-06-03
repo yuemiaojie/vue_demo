@@ -116,7 +116,7 @@ export default {
     }
   },
   created() {
-    this.themeColor = localStorage.getItem('theme_color')
+    this.themeColor = localStorage.getItem('themeColor')
   },
   mounted() {
     screenfull.on('change', _ => {
@@ -229,7 +229,7 @@ export default {
     left: 0;
     width: 100%;
     height: 80px;
-    background-color: #409eff;
+    background-color: var(--color);
   }
 }
 </style>
