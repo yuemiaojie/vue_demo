@@ -1,7 +1,7 @@
 <template>
   <div id="login-wrap">
     <h2 class="l-t"><i>vue-demo</i></h2>
-    <div class="content">
+    <div class="content theme-bgc">
       <div class="loginform-wrap">
         <el-form
           ref="form"
@@ -132,7 +132,6 @@ export default {
   text-decoration: underline;
 }
 .content {
-  background-color: var(--color);
   padding: 70px 0 120px;
   border-radius: 10px;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);

@@ -3,7 +3,6 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-const webpack = require('webpack')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
 const appConfig = require('../config/app-config.js')
@@ -56,7 +55,7 @@ module.exports = {
           : config.build_dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json', '.scss', '.css'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@': resolve('src'),

@@ -7,7 +7,7 @@
       <el-breadcrumb-item
         v-for="(v, i) in $route.matched"
         :key="i"
-        :to="{path: v.path}"
+        :to="{path: v.path + '?' + +new Date()}"
       >
         {{ v.name }}
       </el-breadcrumb-item>
@@ -49,7 +49,7 @@
         size="medium"
         @change="changeColor"
       />
-      <div class="theme-color-panel" />
+      <div class="theme-color-panel theme-bgc" />
     </el-drawer>
 
     <el-dropdown
@@ -94,6 +94,7 @@ import cookie from 'js-cookie'
 import { changeThemeColor } from '@/utils/themeColorClient'
 import screenfull from 'screenfull'
 import { resetRouter } from '@router'
+import theme from '@assets/css/theme'
 export default {
   name: '',
   components: {
@@ -116,7 +117,7 @@ export default {
     }
   },
   created() {
-    this.themeColor = localStorage.getItem('themeColor')
+    this.themeColor = localStorage.getItem('themeColor') || theme.themeColor
   },
   mounted() {
     screenfull.on('change', _ => {
@@ -229,7 +230,6 @@ export default {
     left: 0;
     width: 100%;
     height: 80px;
-    background-color: var(--color);
   }
 }
 </style>

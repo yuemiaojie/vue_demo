@@ -1,3 +1,5 @@
-:root {
-  --color: #409eff;
+$themeColor: #409eff;
+
+:export {
+  themeColor: $themeColor;
 }

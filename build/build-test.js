@@ -1,7 +1,7 @@
 'use strict'
 require('./check-versions')()
 
-process.env.NODE_ENV = 'testing'
+process.env.NODE_ENV = 'development'
 
 const ora = require('ora')
 const rm = require('rimraf')
@@ -40,7 +40,7 @@ rm(
       console.log(
         chalk.yellow(
           '  Tip: built files are meant to be served over an HTTP server.\n' +
-            "  Opening index.html over file:// won't work.\n"
+          "  Opening index.html over file:// won't work.\n"
         )
       )
     })

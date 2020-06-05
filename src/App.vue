@@ -45,6 +45,7 @@ export default {
   mounted() {
     window.addEventListener('online', this.updateOnlineStatus)
     window.addEventListener('offline', this.updateOnlineStatus)
+    console.log(process.env.NODE_ENV)
   },
   methods: {
     hideNetworkMsgBox() {
@@ -64,7 +65,10 @@ export default {
   }
 }
 </script>
-
+<style lang="scss">
+@import './style/index.scss';
+@import 'nprogress/nprogress.css';
+</style>
 <style lang="scss" scoped>
 #vue-demo {
   min-width: 1024px;

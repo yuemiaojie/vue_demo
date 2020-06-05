@@ -1,7 +1,6 @@
 <template>
   <div class="my-layout-menu">
     <el-menu
-      :router="true"
       :default-active="$route.path"
       :collapse="$store.getters.sidebarStatus === '1' ? true : false"
       mode="vertical"
@@ -27,6 +26,7 @@
               <el-menu-item
                 v-if="!item.hidden"
                 :index="resolvePath(item.path + '/' + childItem.path)"
+                @click="toLink(resolvePath(item.path + '/' + childItem.path))"
               >
                 <p>
                   <i :class="childItem.meta.icon" />
@@ -45,6 +45,7 @@
           <el-menu-item
             v-if="!item.hidden"
             :index="resolvePath(item.path)"
+            @click="toLink(resolvePath(item.path))"
           >
             <p>{{ item.name }}</p>
           </el-menu-item>
@@ -84,6 +85,14 @@ export default {
   methods: {
     resolvePath(routePath) {
       return path.resolve(this.basePath, routePath)
+    },
+    toLink(path) {
+      this.$router.push({
+        path,
+        query: {
+          t: +new Date()
+        }
+      })
     }
   }
 }
