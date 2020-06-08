@@ -4,22 +4,13 @@
       <router-view v-if="$route.meta.keepAlive && isRouterAlive" />
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive && isRouterAlive" />
-    <div
-      v-if="!onLine && !hideNetworkMsg"
-      class="network-msg-box"
-    >
-      <div
-        class="close-box"
-        @click="hideNetworkMsgBox"
-      >
+    <div v-if="!onLine" class="network-msg-box">
+      <div class="close-box" @click="hideNetworkMsgBox">
         <i class="el-icon-close" />
       </div>
       <h2>网络异常</h2>
       <p>请检查网络是否正常连接，如操作无效，请
-        <a
-          class="to-feedback-btn"
-          href="1"
-        >
+        <a class="to-feedback-btn" href="1">
           联系客服
         </a>
       </p>
@@ -45,7 +36,6 @@ export default {
   mounted() {
     window.addEventListener('online', this.updateOnlineStatus)
     window.addEventListener('offline', this.updateOnlineStatus)
-    console.log(process.env.NODE_ENV)
   },
   methods: {
     hideNetworkMsgBox() {

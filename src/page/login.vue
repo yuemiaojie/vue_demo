@@ -1,57 +1,27 @@
 <template>
   <div id="login-wrap">
-    <h2 class="l-t"><i>vue-demo</i></h2>
-    <div class="content theme-bgc">
+    <h2 class="l-t"><i>管理平台</i></h2>
+    <div class="content">
       <div class="loginform-wrap">
-        <el-form
-          ref="form"
-          :rules="rules"
-          :model="form"
-          label-width="100px"
-        >
-          <el-form-item
-            label="账号："
-            prop="userName"
-          >
-            <el-input
-              v-model="form.userName"
-              placeholder="请输入账号"
-            >
-              <i
-                slot="prefix"
-                class="el-input__icon el-icon-user"
-              />
+        <el-form ref="form" :rules="rules" :model="form" label-width="100px">
+          <el-form-item label="账号：" prop="userName">
+            <el-input v-model="form.userName" placeholder="请输入账号">
+              <i slot="prefix" class="el-input__icon el-icon-user" />
             </el-input>
           </el-form-item>
-          <el-form-item
-            label="密码："
-            prop="password"
-          >
-            <el-input
-              v-model="form.password"
-              show-password
-              placeholder="请输入密码"
-            >
-              <i
-                slot="prefix"
-                class="el-input__icon el-icon-lock"
-              />
+          <el-form-item label="密码：" prop="password">
+            <el-input v-model="form.password" show-password placeholder="请输入密码">
+              <i slot="prefix" class="el-input__icon el-icon-lock" />
             </el-input>
           </el-form-item>
           <el-row type="flex">
             <el-form-item>
-              <el-checkbox
-                v-model="form.savePassword"
-                size="mini"
-              >
+              <el-checkbox v-model="form.savePassword" size="mini">
                 记住密码
               </el-checkbox>
             </el-form-item>
             <el-form-item>
-              <el-button
-                type="primary"
-                @click="login('form')"
-              >
+              <el-button type="primary" @click="login('form')">
                 登陆
               </el-button>
             </el-form-item>
@@ -134,7 +104,7 @@ export default {
 .content {
   padding: 70px 0 120px;
   border-radius: 10px;
-  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.3);
 }
 .loginform-wrap {
   width: 500px;

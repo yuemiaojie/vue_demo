@@ -1,7 +1,7 @@
 <template>
   <layout-menu
-    :routers="$store.getters.addRoutes.length > 0 ? $store.getters.addRoutes[1].children : []"
-    :base-path="'/home'"
+    :routers="$store.getters.addRoutes.length > 0 ? $store.getters.addRoutes[0].children : []"
+    :base-path="'/'"
   />
 </template>
 
@@ -18,7 +18,8 @@ export default {
 
     }
   },
-  created() { },
+  created() {
+  },
   mounted() { },
   methods: {}
 }

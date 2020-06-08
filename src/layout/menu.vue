@@ -43,11 +43,11 @@
         </el-submenu>
         <div v-else>
           <el-menu-item
-            v-if="!item.hidden"
             :index="resolvePath(item.path)"
             @click="toLink(resolvePath(item.path))"
           >
-            <p>{{ item.name }}</p>
+            <i :class="item.meta.icon" />
+            {{ item.name }}
           </el-menu-item>
           <AsideMenus
             v-if="item.children && item.children.length > 0"

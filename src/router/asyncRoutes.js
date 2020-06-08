@@ -2,23 +2,26 @@ export const asyncRoutes = [
   {
     path: '/',
     redirect: '/home',
+    name: '管理平台',
     meta: {
-      role: [1, 2, 3]
-    }
-  },
-  {
-    path: '/home',
-    name: '首页',
-    meta: {
-      title: 'home',
       role: [1, 2, 3]
     },
     component: _ => import('@page'),
     children: [
       {
+        path: 'home',
+        name: 'home',
+        meta: {
+          title: '首页',
+          role: [1, 2, 3],
+          icon: 'el-icon-s-home'
+        },
+        component: _ => import('@page/home')
+      },
+      {
         path: 'content01',
         redirect: 'content01/content01',
-        name: '管理01',
+        name: 'content01',
         meta: {
           role: [1, 2, 3],
           submenu: true,
@@ -27,10 +30,10 @@ export const asyncRoutes = [
         component: _ => import('@page/transfer'),
         children: [
           {
-            path: 'content01',
-            name: '内容页01',
+            path: 'content001',
+            name: 'content001',
             meta: {
-              title: 'content01',
+              title: '内容页01',
               role: [1],
               icon: 'el-icon-s-grid'
             },
@@ -38,9 +41,9 @@ export const asyncRoutes = [
           },
           {
             path: 'edit',
-            name: '编辑页01',
+            name: 'edit',
             meta: {
-              title: 'content02',
+              title: '编辑页01',
               role: [2],
               icon: 'el-icon-s-grid'
             },
@@ -50,12 +53,11 @@ export const asyncRoutes = [
       },
       {
         path: 'content03',
-        name: '内容页03',
+        name: 'content03',
         hidden: true,
         meta: {
-          title: 'content03',
+          title: '内容页03',
           role: [2],
-          name: '编辑内容页01',
           icon: 'el-icon-s-grid'
         },
         component: _ => import('@page/content03')

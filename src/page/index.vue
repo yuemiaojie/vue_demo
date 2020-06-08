@@ -5,12 +5,6 @@
       <el-container direction="vertical">
         <layoutHeader />
         <el-main>
-          <div
-            v-if="$route.path === '/home'"
-            class="home-content"
-          >
-            <h2>欢迎来到首页</h2>
-          </div>
           <router-view :key="'time' + new Date().getTime()" />
         </el-main>
       </el-container>
@@ -23,7 +17,7 @@
 import layoutHeader from '@layout/header'
 import layoutAside from '@layout/aside'
 export default {
-  name: 'Home',
+  name: 'Layout',
   components: { layoutHeader, layoutAside },
   mixins: [],
   props: '',
@@ -34,9 +28,11 @@ export default {
     }
   },
   created() {
+    // [自动生成表格](https://www.tablesgenerator.com/html_tables)
   },
   mounted() {
     this.setWinH()
+
     window.addEventListener('resize', this.listenResize)
   },
   destroyed() {
@@ -70,6 +66,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-</style>
-<style lang="scss">
 </style>
