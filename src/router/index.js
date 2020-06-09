@@ -1,6 +1,7 @@
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { constantRoutes } from './constantRoutes'
-
+Vue.use(VueRouter)
 const createRouter = () => new VueRouter({
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes

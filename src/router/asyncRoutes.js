@@ -2,8 +2,9 @@ export const asyncRoutes = [
   {
     path: '/',
     redirect: '/home',
-    name: '管理平台',
+    name: '/',
     meta: {
+      title: '管理平台',
       role: [1, 2, 3]
     },
     component: _ => import('@page'),
@@ -14,53 +15,29 @@ export const asyncRoutes = [
         meta: {
           title: '首页',
           role: [1, 2, 3],
-          icon: 'el-icon-s-home'
+          icon: 'icon-shouye1'
         },
         component: _ => import('@page/home')
       },
       {
-        path: 'content01',
-        redirect: 'content01/content01',
-        name: 'content01',
+        path: 'tinymce',
+        name: 'tinymce',
         meta: {
+          title: '富文本',
           role: [1, 2, 3],
-          submenu: true,
-          icon: 'el-icon-menu'
+          icon: 'icon-ai-edit'
         },
-        component: _ => import('@page/transfer'),
-        children: [
-          {
-            path: 'content001',
-            name: 'content001',
-            meta: {
-              title: '内容页01',
-              role: [1],
-              icon: 'el-icon-s-grid'
-            },
-            component: _ => import('@page/content01')
-          },
-          {
-            path: 'edit',
-            name: 'edit',
-            meta: {
-              title: '编辑页01',
-              role: [2],
-              icon: 'el-icon-s-grid'
-            },
-            component: _ => import('@page/content02')
-          }
-        ]
+        component: _ => import('@page/tinymce')
       },
       {
-        path: 'content03',
-        name: 'content03',
-        hidden: true,
+        path: 'svga',
+        name: 'svga',
         meta: {
-          title: '内容页03',
-          role: [2],
-          icon: 'el-icon-s-grid'
+          title: 'svga',
+          role: [1, 2, 3],
+          icon: 'icon-svg'
         },
-        component: _ => import('@page/content03')
+        component: _ => import('@page/svga')
       }
     ]
   },

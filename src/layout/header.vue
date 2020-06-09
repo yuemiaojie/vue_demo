@@ -9,7 +9,7 @@
         :key="i"
         :to="{path: v.path + '?' + +new Date()}"
       >
-        {{ v.name }}
+        {{ v.meta.title }}
       </el-breadcrumb-item>
     </el-breadcrumb>
     <el-dropdown

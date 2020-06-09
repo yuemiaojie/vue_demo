@@ -11,9 +11,6 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const apiMocker = require('webpack-api-mocker')
 
-const cdnBaseHttp = utils.cdnBaseHttp
-const externalConfig = JSON.parse(JSON.stringify(utils.externalConfig))
-
 const env = require('../config/dev.env')
 for (const key in env) {
   if (env.hasOwnProperty(key)) {
@@ -81,10 +78,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      cdnConfig: {
-        externalConfig,
-        cdnBaseHttp
-      },
       inject: true,
       favicon: path.resolve('favicon.ico')
     }),

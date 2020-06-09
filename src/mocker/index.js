@@ -1,5 +1,5 @@
 const Qs = require('qs')
-const data = require('./data/user')
+const data = require('./data/index')
 
 const proxy = {
   'GET user': (req, res) => {
@@ -9,6 +9,14 @@ const proxy = {
       res.json(data.userData.suc)
     } else {
       res.json(data.userData.err)
+    }
+  },
+  'GET homeBanner': (req, res) => {
+    const { cookie } = req.headers
+    if (decodeURIComponent(cookie).indexOf('token') >= 0) {
+      res.json(data.homeBanner.suc)
+    } else {
+      res.json(data.homeBanner.err)
     }
   }
 }

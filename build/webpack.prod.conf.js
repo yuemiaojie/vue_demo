@@ -18,9 +18,6 @@ for (const key in env) {
   }
 }
 
-const cdnBaseHttp = utils.cdnBaseHttp
-const externalConfig = JSON.parse(JSON.stringify(utils.externalConfig))
-
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -73,10 +70,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: config.build.index,
       template: 'index.html',
-      cdnConfig: {
-        externalConfig,
-        cdnBaseHttp
-      },
       inject: true,
       favicon: path.resolve('favicon.ico'),
       minify: {

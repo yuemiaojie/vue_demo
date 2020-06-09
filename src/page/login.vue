@@ -1,27 +1,59 @@
 <template>
   <div id="login-wrap">
-    <h2 class="l-t"><i>管理平台</i></h2>
+    <h2 class="l-t">
+      <i>管理平台</i>
+    </h2>
     <div class="content">
       <div class="loginform-wrap">
-        <el-form ref="form" :rules="rules" :model="form" label-width="100px">
-          <el-form-item label="账号：" prop="userName">
-            <el-input v-model="form.userName" placeholder="请输入账号">
-              <i slot="prefix" class="el-input__icon el-icon-user" />
+        <el-form
+          ref="form"
+          :rules="rules"
+          :model="form"
+          label-width="100px"
+        >
+          <el-form-item
+            label="账号："
+            prop="userName"
+          >
+            <el-input
+              v-model="form.userName"
+              placeholder="请输入账号"
+            >
+              <i
+                slot="prefix"
+                class="el-input__icon el-icon-user"
+              />
             </el-input>
           </el-form-item>
-          <el-form-item label="密码：" prop="password">
-            <el-input v-model="form.password" show-password placeholder="请输入密码">
-              <i slot="prefix" class="el-input__icon el-icon-lock" />
+          <el-form-item
+            label="密码："
+            prop="password"
+          >
+            <el-input
+              v-model="form.password"
+              show-password
+              placeholder="请输入密码"
+            >
+              <i
+                slot="prefix"
+                class="el-input__icon el-icon-lock"
+              />
             </el-input>
           </el-form-item>
           <el-row type="flex">
             <el-form-item>
-              <el-checkbox v-model="form.savePassword" size="mini">
+              <el-checkbox
+                v-model="form.savePassword"
+                size="mini"
+              >
                 记住密码
               </el-checkbox>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="login('form')">
+              <el-button
+                type="primary"
+                @click="login('form')"
+              >
                 登陆
               </el-button>
             </el-form-item>
@@ -71,6 +103,7 @@ export default {
     login(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          this.$loading()
           const { savePassword, userName, password } = this.form
           const para = { userName, password }
           this.$store.dispatch('user/HandleUserinfo', para).then(userInfo => {
@@ -84,6 +117,7 @@ export default {
             const addRoutes = this.$store.getters.addRoutes
             this.$router.addRoutes(addRoutes)
             this.$router.push('/')
+            this.$loading().close()
           })
         }
       })

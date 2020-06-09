@@ -5,7 +5,7 @@
       <el-container direction="vertical">
         <layoutHeader />
         <el-main>
-          <router-view :key="'time' + new Date().getTime()" />
+          <router-view />
         </el-main>
       </el-container>
     </el-container>
@@ -65,5 +65,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 </style>

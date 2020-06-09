@@ -7,12 +7,9 @@ import backToTop from '@/components_config/back_top'
 import * as filters from '@/filters/filters'
 import utils from '@utils'
 import cookie from 'js-cookie'
-import { Loading, Message } from 'element-ui'
+import ELEMENT from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import NProgress from 'nprogress'
-import './iconfont/iconfont'
-import IconSvg from '@/components/IconSvg'
-Vue.component('icon-svg', IconSvg)
 // import Mock from 'mockjs'
 // console.log()
 
@@ -56,7 +53,8 @@ router.afterEach((to, from) => {
 
 // 注册组件
 Vue.use(backToTop)
-
+Vue.use(ELEMENT)
+const { Loading, Message } = ELEMENT
 // 绑定全局
 Vue.prototype.$api = api
 Vue.prototype.$utils = utils

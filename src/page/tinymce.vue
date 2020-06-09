@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>欢迎来到content2页面，嘻嘻嘻</h2>
+    tinymce
   </div>
 </template>
 
@@ -10,6 +10,7 @@ export default {
   components: {
   },
   props: '',
+
   data() {
     return {
 

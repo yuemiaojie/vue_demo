@@ -35,15 +35,7 @@ module.exports = {
   ],
   context: path.resolve(__dirname, '../'),
   entry: ['babel-polyfill', './src/main.js'],
-  externals: {
-    // 资源名: 定义名
-    vue: 'Vue',
-    'vue-router': 'VueRouter',
-    vuex: 'Vuex',
-    axios: 'axios',
-    qs: 'Qs',
-    'element-ui': 'ELEMENT'
-  },
+  externals: {},
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',

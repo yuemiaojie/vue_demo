@@ -4,13 +4,22 @@
       <router-view v-if="$route.meta.keepAlive && isRouterAlive" />
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive && isRouterAlive" />
-    <div v-if="!onLine" class="network-msg-box">
-      <div class="close-box" @click="hideNetworkMsgBox">
+    <div
+      v-if="!onLine"
+      class="network-msg-wrap"
+    >
+      <div
+        class="close-wrap"
+        @click="hideNetworkMsgBox"
+      >
         <i class="el-icon-close" />
       </div>
       <h2>网络异常</h2>
       <p>请检查网络是否正常连接，如操作无效，请
-        <a class="to-feedback-btn" href="1">
+        <a
+          class="to-feedback-btn"
+          href="1"
+        >
           联系客服
         </a>
       </p>
@@ -58,12 +67,13 @@ export default {
 <style lang="scss">
 @import './style/index.scss';
 @import 'nprogress/nprogress.css';
+@import url('//at.alicdn.com/t/font_1873990_awsakriy7j.css');
 </style>
 <style lang="scss" scoped>
 #vue-demo {
   min-width: 1024px;
 }
-.network-msg-box {
+.network-msg-wrap {
   position: fixed;
   bottom: 35px;
   right: 35px;
@@ -77,13 +87,13 @@ export default {
 .to-feedback-btn {
   text-decoration: underline;
 }
-.close-box {
+.close-wrap {
   position: absolute;
   top: 5px;
   right: 12px;
   cursor: pointer;
 }
-.close-box:hover {
+.close-wrap:hover {
   i {
     font-weight: bold;
   }

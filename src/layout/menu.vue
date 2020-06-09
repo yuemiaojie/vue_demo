@@ -15,8 +15,8 @@
           :index="item.name"
         >
           <template slot="title">
-            <i :class="item.meta.icon" />
-            <span>{{ item.name }}</span>
+            <i :class="'iconfont ' + item.meta.icon" />
+            <span slot="title">{{ item.meta.title }}</span>
           </template>
           <el-menu-item-group>
             <div
@@ -29,8 +29,8 @@
                 @click="toLink(resolvePath(item.path + '/' + childItem.path))"
               >
                 <p>
-                  <i :class="childItem.meta.icon" />
-                  {{ childItem.name }}
+                  <i :class="'iconfont ' + childItem.meta.icon" />
+                  <span>{{ childItem.name }}</span>
                 </p>
               </el-menu-item>
               <AsideMenus
@@ -46,8 +46,8 @@
             :index="resolvePath(item.path)"
             @click="toLink(resolvePath(item.path))"
           >
-            <i :class="item.meta.icon" />
-            {{ item.name }}
+            <i :class="'iconfont ' + item.meta.icon" />
+            <span slot="title">{{ item.meta.title }}</span>
           </el-menu-item>
           <AsideMenus
             v-if="item.children && item.children.length > 0"
@@ -102,14 +102,13 @@ export default {
 .my-layout-menu {
   border-right: 1px solid #efefef;
   .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
+    max-width: 200px;
+    min-width: 100px;
   }
   .el-menu {
     border: none;
   }
   .el-menu-item {
-    width: 200px;
     p {
       overflow: hidden;
       text-overflow: ellipsis;
