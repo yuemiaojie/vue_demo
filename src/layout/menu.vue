@@ -1,5 +1,5 @@
 <template>
-  <div class="my-layout-menu">
+  <div id="layout-menu">
     <el-menu
       :default-active="$route.path"
       :collapse="$store.getters.sidebarStatus === '1' ? true : false"
@@ -99,7 +99,7 @@ export default {
 </script>
 
 <style lang="scss">
-.my-layout-menu {
+#layout-menu {
   border-right: 1px solid #efefef;
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     max-width: 200px;

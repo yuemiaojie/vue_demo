@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to, from) => {
   NProgress.done()
-  document.title = to.meta.title
+  document.title = to.meta.title || '管理平台'
 })
 
 // 注册组件

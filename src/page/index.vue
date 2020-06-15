@@ -14,6 +14,7 @@
 </template>
 
 <script type="text/javascript">
+// [自动生成表格](https://www.tablesgenerator.com/html_tables)
 import layoutHeader from '@layout/header'
 import layoutAside from '@layout/aside'
 export default {
@@ -27,12 +28,9 @@ export default {
       timer: false
     }
   },
-  created() {
-    // [自动生成表格](https://www.tablesgenerator.com/html_tables)
-  },
+  created() { },
   mounted() {
     this.setWinH()
-
     window.addEventListener('resize', this.listenResize)
   },
   destroyed() {
