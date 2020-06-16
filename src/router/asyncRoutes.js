@@ -38,15 +38,33 @@ export const asyncRoutes = [
           icon: 'icon-svg'
         },
         component: _ => import('@page/svga')
+      },
+      {
+        path: 'excel',
+        name: 'excel',
+        meta: {
+          title: 'excel',
+          role: [1, 2, 3],
+          icon: 'icon-excel'
+        },
+        component: _ => import('@page/excel')
       }
     ]
+  },
+  {
+    path: '/empty',
+    name: 'empty',
+    meta: {
+      title: '',
+      role: [1, 2, 3]
+    },
+    component: resolve => require(['@page/empty'], resolve)
   },
   {
     path: '*',
     name: '404',
     meta: {
       title: '404',
-      id: '1',
       role: [1, 2, 3]
     },
     component: resolve => require(['@page/error/404'], resolve)

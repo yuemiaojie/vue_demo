@@ -87,12 +87,11 @@ export default {
       return path.resolve(this.basePath, routePath)
     },
     toLink(path) {
-      this.$router.push({
-        path,
-        query: {
-          t: +new Date()
-        }
-      })
+      if (this.$route.path === path) {
+        this.$router.push('/empty')
+      } else {
+        this.$router.push(path)
+      }
     }
   }
 }

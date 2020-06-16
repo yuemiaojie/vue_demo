@@ -7,7 +7,7 @@
       <el-breadcrumb-item
         v-for="(v, i) in $route.matched"
         :key="i"
-        :to="{path: v.path + '?' + +new Date()}"
+        :to="{path: v.path}"
       >
         {{ v.meta.title }}
       </el-breadcrumb-item>
