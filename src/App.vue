@@ -67,7 +67,7 @@ export default {
 <style lang="scss">
 @import './style/index.scss';
 @import 'nprogress/nprogress.css';
-@import url('//at.alicdn.com/t/font_1873990_0bam6l5q2en.css');
+@import url('//at.alicdn.com/t/font_1873990_blu248f9is8.css');
 </style>
 <style lang="scss" scoped>
 #vue-demo {

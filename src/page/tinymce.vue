@@ -113,3 +113,10 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+#tinymce-wrap {
+  .tox-sidebar-wrap {
+    cursor: pointer !important;
+  }
+}
+</style>

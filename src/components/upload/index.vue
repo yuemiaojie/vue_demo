@@ -1,7 +1,15 @@
 <template>
   <div id="file-wrap">
-    <el-upload :http-request="upload" :show-file-list="false" multiple action="">
-      <el-button size="mini" type="primary">点击上传</el-button>
+    <el-upload
+      :http-request="upload"
+      :show-file-list="false"
+      multiple
+      action=""
+    >
+      <el-button
+        size="mini"
+        type="primary"
+      >点击上传</el-button>
     </el-upload>
   </div>
 </template>

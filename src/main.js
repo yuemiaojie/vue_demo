@@ -14,7 +14,7 @@ import NProgress from 'nprogress'
 // console.log()
 
 NProgress.configure({ showSpinner: false })
-
+// 全局filter
 Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
 
 // 主题换肤

@@ -48,6 +48,16 @@ export const asyncRoutes = [
           icon: 'icon-excel'
         },
         component: _ => import('@page/excel')
+      },
+      {
+        path: 'demo',
+        name: 'demo',
+        meta: {
+          title: 'demo',
+          role: [1, 2, 3],
+          icon: 'icon-ceshi'
+        },
+        component: _ => import('@page/demo')
       }
     ]
   },
