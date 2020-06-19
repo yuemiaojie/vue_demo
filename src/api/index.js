@@ -66,7 +66,7 @@ axios.interceptors.response.use(
           router.push('/login')
           cookie.remove('userInfo')
           store.commit('permission/DESTROY_ROUTES')
-          store.commit('settings/SET_SETTINGS', { sidebarStatus: '0' })
+          this.$store.commit('user/SET_USERINFO', {})
           resetRouter()
           console.warn('返回401啦，自动跳转至登录页！！！')
           return Promise.reject(response)

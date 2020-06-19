@@ -12,7 +12,6 @@ const actions = {
           headers: { isEmpty: true }
         }
       ).then(res => {
-        console.log(res)
         commit('SET_USERINFO', res)
         resolve(res)
       })

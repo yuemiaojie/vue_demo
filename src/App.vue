@@ -52,7 +52,6 @@ export default {
     },
     updateOnlineStatus(e) {
       const { type } = e
-      console.log(this.onLine)
       this.onLine = type === 'online'
     },
     reload() {
@@ -72,30 +71,30 @@ export default {
 <style lang="scss" scoped>
 #vue-demo {
   min-width: 1024px;
-}
-.network-msg-wrap {
-  position: fixed;
-  bottom: 35px;
-  right: 35px;
-  padding: 30px 35px;
-  line-height: 30px;
-  color: #e33;
-  background-color: #f6e3e3;
-  border: 1px solid #e99;
-  z-index: 10000;
-}
-.to-feedback-btn {
-  text-decoration: underline;
-}
-.close-wrap {
-  position: absolute;
-  top: 5px;
-  right: 12px;
-  cursor: pointer;
-}
-.close-wrap:hover {
-  i {
-    font-weight: bold;
+  .network-msg-wrap {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    padding: 30px 35px;
+    line-height: 30px;
+    color: #e33;
+    background-color: #f6e3e3;
+    border: 1px solid #e99;
+    z-index: 10000;
+  }
+  .to-feedback-btn {
+    text-decoration: underline;
+  }
+  .close-wrap {
+    position: absolute;
+    top: 5px;
+    right: 12px;
+    cursor: pointer;
+  }
+  .close-wrap:hover {
+    i {
+      font-weight: bold;
+    }
   }
 }
 </style>

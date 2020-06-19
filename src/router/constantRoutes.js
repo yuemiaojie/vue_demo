@@ -1,9 +1,10 @@
 export const constantRoutes = [
   {
     path: '/login',
-    name: '登录页',
+    name: 'login',
     meta: {
-      title: 'login',
+      title: '登录',
+      enTitle: 'login',
       id: '0',
       notRequiresAuth: true
     },

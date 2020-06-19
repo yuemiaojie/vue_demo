@@ -5,6 +5,7 @@ export const asyncRoutes = [
     name: '/',
     meta: {
       title: '管理平台',
+      enTitle: 'management platform',
       role: [1, 2, 3]
     },
     component: _ => import('@page'),
@@ -14,6 +15,7 @@ export const asyncRoutes = [
         name: 'home',
         meta: {
           title: '首页',
+          enTitle: 'home',
           role: [1, 2, 3],
           icon: 'icon-shouye1'
         },
@@ -24,6 +26,7 @@ export const asyncRoutes = [
         name: 'tinymce',
         meta: {
           title: '富文本',
+          enTitle: 'RichText',
           role: [1, 2, 3],
           icon: 'icon-ai-edit'
         },
@@ -34,6 +37,7 @@ export const asyncRoutes = [
         name: 'svga',
         meta: {
           title: 'svga',
+          enTitle: 'svga',
           role: [1, 2, 3],
           icon: 'icon-svg'
         },
@@ -44,6 +48,7 @@ export const asyncRoutes = [
         name: 'excel',
         meta: {
           title: 'excel',
+          enTitle: 'excel',
           role: [1, 2, 3],
           icon: 'icon-excel'
         },
@@ -54,6 +59,7 @@ export const asyncRoutes = [
         name: 'demo',
         meta: {
           title: 'demo',
+          enTitle: 'demo',
           role: [1, 2, 3],
           icon: 'icon-ceshi'
         },
@@ -66,6 +72,7 @@ export const asyncRoutes = [
     name: 'empty',
     meta: {
       title: '',
+      enTitle: '',
       role: [1, 2, 3]
     },
     component: resolve => require(['@page/empty'], resolve)
@@ -75,6 +82,7 @@ export const asyncRoutes = [
     name: '404',
     meta: {
       title: '404',
+      enTitle: '404',
       role: [1, 2, 3]
     },
     component: resolve => require(['@page/error/404'], resolve)

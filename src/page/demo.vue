@@ -86,7 +86,6 @@ export default {
   mounted() { },
   methods: {
     buildingidChange(val) {
-      console.log(this.buildinglist.find(v => v.buildingid === val).layerlist)
       const sameVal = this.buildinglist.find(v => v.buildingid === val)
       if (sameVal && 'layerlist' in sameVal && sameVal.layerlist instanceof Array && sameVal.layerlist.length) {
         this.buildinglist1 = sameVal.layerlist.filter(v => val === v.layerid)

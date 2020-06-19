@@ -16,7 +16,7 @@
         >
           <template slot="title">
             <i :class="'iconfont ' + item.meta.icon" />
-            <span slot="title">{{ item.meta.title }}</span>
+            <span slot="title">{{ $store.getters.language === 'zh' ? item.meta.title : item.meta.enTitle }}</span>
           </template>
           <el-menu-item-group>
             <div
@@ -47,7 +47,7 @@
             @click="toLink(resolvePath(item.path))"
           >
             <i :class="'iconfont ' + item.meta.icon" />
-            <span slot="title">{{ item.meta.title }}</span>
+            <span slot="title">{{ $store.getters.language === 'zh' ? item.meta.title : item.meta.enTitle }}</span>
           </el-menu-item>
           <AsideMenus
             v-if="item.children && item.children.length > 0"
@@ -62,6 +62,7 @@
 
 <script type="text/javascript">
 import path from 'path'
+import cookie from 'js-cookie'
 export default {
   name: 'AsideMenus',
   components: {
@@ -77,7 +78,9 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      cookie
+    }
   },
   created() {
   },

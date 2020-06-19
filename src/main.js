@@ -10,16 +10,32 @@ import cookie from 'js-cookie'
 import ELEMENT from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import NProgress from 'nprogress'
+import VueI18n from 'vue-i18n'
 // import Mock from 'mockjs'
 // console.log()
 
 NProgress.configure({ showSpinner: false })
 // 全局filter
 Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
-
 // 主题换肤
 import { initThemeColor } from './utils/themeColorClient'
 initThemeColor()
+
+const userInfo = cookie.get('userInfo')
+const sidebarStatus = cookie.get('sidebarStatus')
+const language = cookie.get('language')
+if (sidebarStatus) {
+  store.commit('settings/SET_SETTINGS', { key: 'sidebarStatus', val: cookie.get('sidebarStatus') })
+}
+if (language) {
+  store.commit('settings/SET_SETTINGS', { key: 'language', val: cookie.get('language') })
+}
+if (userInfo) {
+  store.commit('user/SET_USERINFO', JSON.parse(cookie.get('userInfo')))
+  store.commit('permission/GENERATE_ROUTES', JSON.parse(userInfo).roles)
+  const addRoutes = store.getters.addRoutes
+  router.addRoutes(addRoutes)
+}
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
@@ -28,18 +44,7 @@ router.beforeEach((to, from, next) => {
   } else {
     const userInfo = cookie.get('userInfo')
     if (userInfo) {
-      if (JSON.parse(userInfo)) {
-        store.commit('settings/SET_SETTINGS', { key: 'sidebarStatus', val: cookie.get('sidebarStatus') })
-        store.commit('user/SET_USERINFO', JSON.parse(cookie.get('userInfo')))
-        if (store.getters.addRoutes.length === 0) {
-          store.commit('permission/GENERATE_ROUTES', JSON.parse(userInfo).roles)
-          const addRoutes = store.getters.addRoutes
-          router.addRoutes(addRoutes)
-          next({ ...to, replace: true })
-        } else {
-          next()
-        }
-      }
+      next()
     } else {
       next('/login')
     }
@@ -48,12 +53,20 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to, from) => {
   NProgress.done()
-  document.title = to.meta.title || '管理平台'
+  document.title = (store.getters.language === 'zh' ? to.meta.title : to.meta.enTitle) || ' - '
 })
 
 // 注册组件
 Vue.use(backToTop)
 Vue.use(ELEMENT)
+Vue.use(VueI18n)
+const i18n = new VueI18n({
+  locale: store.getters.language,
+  messages: {
+    'zh': require('@lang/zh'),
+    'en': require('@lang/en')
+  }
+})
 const { Loading, Message } = ELEMENT
 // 绑定全局
 Vue.prototype.$api = api
@@ -71,6 +84,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  i18n,
   router,
   store,
   components: {

@@ -17,6 +17,7 @@
 // [自动生成表格](https://www.tablesgenerator.com/html_tables)
 import layoutHeader from '@layout/header'
 import layoutAside from '@layout/aside'
+let timer = null
 export default {
   name: 'Layout',
   components: { layoutHeader, layoutAside },
@@ -24,24 +25,21 @@ export default {
   props: '',
   data() {
     return {
-      containerWrapStyle: '',
-      timer: false
+      containerWrapStyle: ''
     }
   },
   created() { },
   mounted() {
     this.setWinH()
     window.addEventListener('resize', this.listenResize)
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.listenResize)
+    this.$once('hook:beforeDestroy', _ => window.removeEventListener('resize', this.listenResize))
   },
   methods: {
     listenResize() {
-      if (!this.timer) {
-        this.timer = true
-        setTimeout(() => {
-          this.timer = false
+      if (!timer) {
+        timer = true
+        setTimeout(_ => {
+          timer = false
           this.setWinH()
         }, 200)
       }

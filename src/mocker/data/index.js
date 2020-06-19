@@ -10,7 +10,7 @@ const data = {
           data: {
             'token': Mock.Random.word(30),
             username: Mock.Random.cname(),
-            roles: [1, 2, 3],
+            roles: [1],
             id: Mock.Random.id(),
             headImg: 'https://public-resource-oss.oss-cn-shanghai.aliyuncs.com/0/20200605150310/1/20180429111927_4i2Ks.jpeg'
           },

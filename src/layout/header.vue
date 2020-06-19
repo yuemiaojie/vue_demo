@@ -36,6 +36,12 @@
         >
           切换侧边栏
         </el-dropdown-item>
+        <el-dropdown-item
+          divided
+          command="handleLanguage"
+        >
+          切换语言
+        </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
     <el-drawer
@@ -135,7 +141,7 @@ export default {
   destroyed() { },
   methods: {
     userCommand(val) {
-      var evs = {
+      const evs = {
         handlePersonalData: _ => { },
         changePassword: _ => { },
         loginOut: _ => this.loginOut()
@@ -143,7 +149,7 @@ export default {
       evs[val]()
     },
     pageCommand(val) {
-      var evs = {
+      const evs = {
         setTheme: _ => {
           this.drawer = true
         },
@@ -155,20 +161,26 @@ export default {
           }
         },
         handleSidebar: _ => {
-          var sidebarStatus = cookie.get('sidebarStatus') === '1' ? '0' : '1'
+          const sidebarStatus = cookie.get('sidebarStatus') === '1' ? '0' : '1'
           this.$store.commit('settings/SET_SETTINGS', { key: 'sidebarStatus', val: sidebarStatus })
           cookie.set('sidebarStatus', this.$store.getters.sidebarStatus)
+        },
+        handleLanguage: _ => {
+          const language = cookie.get('language') === 'zh' ? 'en' : 'zh'
+          this.$store.commit('settings/SET_SETTINGS', { key: 'language', val: language })
+          cookie.set('language', language)
+          this.$i18n.locale = language
+          window.location.reload()
         }
       }
       evs[val]()
     },
     loginOut() {
-      var confirm = window.confirm('您确定要退出登录吗？')
+      const confirm = window.confirm('您确定要退出登录吗？')
       if (confirm === true) {
         this.$router.push('/login')
         cookie.remove('userInfo')
         this.$store.commit('permission/DESTROY_ROUTES')
-        this.$store.commit('settings/SET_SETTINGS', { sidebarStatus: '0' })
         this.$store.commit('user/SET_USERINFO', {})
         resetRouter()
       }

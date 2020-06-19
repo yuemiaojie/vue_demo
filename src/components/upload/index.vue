@@ -5,11 +5,24 @@
       :show-file-list="false"
       multiple
       action=""
+      list-type="text"
     >
+      <div class="iframe-wrap">
+        <embed
+          src="http://file--upload.oss-cn-shanghai.aliyuncs.com/img/20200617144239PzXSGRBecd_001.svg"
+          frameborder="0"
+        >
+        <div
+          class="iframe-mask"
+          @click="handleClick"
+        />
+      </div>
       <el-button
         size="mini"
         type="primary"
-      >点击上传</el-button>
+      >
+        点击上传
+      </el-button>
     </el-upload>
   </div>
 </template>
@@ -40,9 +53,11 @@ export default {
   created() { },
   mounted() { },
   methods: {
+    handleClick() {
+      console.log('点击了')
+    },
     async upload(e) {
       const file = e.file
-
       // 效验
       if (!navigator.onLine) {
         alert('网络错误')
@@ -86,4 +101,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.iframe-wrap {
+  position: relative;
+  width: 100px;
+}
+.iframe-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>

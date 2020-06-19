@@ -1,5 +1,6 @@
 const state = {
-  sidebarStatus: '0'
+  sidebarStatus: '0',
+  language: 'zh'
 }
 const getters = {}
 const actions = {

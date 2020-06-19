@@ -4,6 +4,7 @@
       id="demoCanvas"
       style="width: 300px;height: 300px;"
     />
+    <upload :file-format="['svg']" />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ export default {
     }
   },
   created() {
+    // http://file--upload.oss-cn-shanghai.aliyuncs.com/img/20200617144239PzXSGRBecd_001.svg
   },
   mounted() {
     var player = new SVGA.Player('#demoCanvas')
@@ -31,7 +33,8 @@ export default {
       player.startAnimation()
     })
   },
-  methods: {}
+  methods: {
+  }
 }
 </script>
 

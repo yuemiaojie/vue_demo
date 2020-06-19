@@ -125,7 +125,6 @@ export default {
             obj.display_time = v['发布时间']
             outdata1.push(obj)
           })
-          console.log(outdata1)
         }
         reader.readAsArrayBuffer(f)
       }

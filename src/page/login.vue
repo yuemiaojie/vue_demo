@@ -1,7 +1,7 @@
 <template>
   <div id="login-wrap">
     <h2 class="l-t">
-      <i>管理平台</i>
+      <i>{{ $t('login.tit') }}</i>
     </h2>
     <div class="content">
       <div class="loginform-wrap">
@@ -9,15 +9,15 @@
           ref="form"
           :rules="rules"
           :model="form"
-          label-width="100px"
+          label-width="120px"
         >
           <el-form-item
-            label="账号："
+            :label="$t('login.userNameInpLabel')"
             prop="userName"
           >
             <el-input
               v-model="form.userName"
-              placeholder="请输入账号"
+              :placeholder="$t('login.userNameInpPlaceholder')"
             >
               <i
                 slot="prefix"
@@ -26,13 +26,13 @@
             </el-input>
           </el-form-item>
           <el-form-item
-            label="密码："
+            :label="$t('login.passwordInpLabel')"
             prop="password"
           >
             <el-input
               v-model="form.password"
+              :placeholder="$t('login.passwordInpPlaceholder')"
               show-password
-              placeholder="请输入密码"
             >
               <i
                 slot="prefix"
@@ -46,7 +46,7 @@
                 v-model="form.savePassword"
                 size="mini"
               >
-                记住密码
+                {{ $t('login.saveLogin') }}
               </el-checkbox>
             </el-form-item>
             <el-form-item>
@@ -54,7 +54,7 @@
                 type="primary"
                 @click="login('form')"
               >
-                登陆
+                {{ $t('login.login') }}
               </el-button>
             </el-form-item>
           </el-row>
@@ -67,26 +67,29 @@
 <script type="text/javascript">
 import cookie from 'js-cookie'
 import { Base64 } from 'js-base64'
-const rules = {
-  userName: [
-    { required: true, message: '请输入账号', trigger: ['blur', 'change'] },
-    { pattern: /^\d+$|^\d+[.]?\d+$/, message: '请输入正确的账号，只允许输入数字' }
-  ],
-  password: [
-    { required: true, message: '请输入密码', trigger: ['blur', 'change'] }
-  ]
-}
 export default {
   name: 'Login',
   components: {},
   props: '',
   data() {
     return {
-      rules,
       form: {
         savePassword: false,
         userName: '',
         password: ''
+      }
+    }
+  },
+  computed: {
+    rules() {
+      return {
+        userName: [
+          { required: true, message: this.$t('login.userNameMsg1'), trigger: ['blur', 'change'] },
+          { pattern: /^\d+$|^\d+[.]?\d+$/, message: this.$t('login.userNameMsg2') }
+        ],
+        password: [
+          { required: true, message: this.$t('login.passwordMsg'), trigger: ['blur', 'change'] }
+        ]
       }
     }
   },
@@ -110,10 +113,12 @@ export default {
             if (savePassword) {
               cookie.set('loginInfo', JSON.stringify({ ...para, password: Base64.encode(password) }), { expires: 3 })
             } else {
-              cookie.remove('loginInfo')
+              if (cookie.get('loginInfo')) {
+                cookie.remove('loginInfo')
+              }
             }
             cookie.set('userInfo', JSON.stringify(userInfo), { expires: 7 })
-            this.$store.commit('permission/GENERATE_ROUTES', [1, 2, 3])
+            this.$store.commit('permission/GENERATE_ROUTES', userInfo.roles)
             const addRoutes = this.$store.getters.addRoutes
             this.$router.addRoutes(addRoutes)
             this.$router.push('/')
