@@ -5,6 +5,7 @@
       :init="init"
       api-key="2ctgucap6d0w5y89jgup54r5mbdun849xi351gs86alz2754"
     />
+    <div>{{ tinymceHtml }}</div>
   </div>
 </template>
 

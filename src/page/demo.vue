@@ -26,19 +26,34 @@
         :value="item.layerid"
       />
     </el-select>
+    <div v-html="html" />
+    <!--外部使用方式 confirm cancel 是自定义的事件 opened是包装el-dialog的事件，通过$listeners传入到el-dialog里面-->
+    <custom-dialog
+      :visible.sync="visibleDialog"
+      @opened="$_handleOpened"
+      @confirm="$_handleConfirm"
+      @cancel="$_handleCancel"
+    >
+      这是一段内容
+    </custom-dialog>
   </div>
 </template>
 
 <script type="text/javascript">
+import customDialog from './demo01'
 export default {
   name: 'Demo',
   components: {
+    customDialog
   },
   props: '',
   data() {
     return {
+      visibleDialog: false,
       value1: '',
       value2: '',
+      list: [],
+      html: '',
       buildinglist: [
         {
           'buildingid': '4028818c5fd89017015fdc7d2d5102da',
@@ -82,9 +97,28 @@ export default {
       buildinglist1: []
     }
   },
-  created() { },
+  created() {
+    this.list = [
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_304_Org.txt  匹配度:2.2277837',
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_107_Org.txt  匹配度:2.1381123',
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_231_Org.txt  匹配度:2.1381123',
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_106_Org.txt  匹配度:2.0668051',
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_444_Org.txt  匹配度:2.0001006',
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_203_Org.txt  匹配度:1.8788258',
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_233_Org.txt  匹配度:1.8058287',
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_443_Org.txt  匹配度:1.6173184',
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_332_Org.txt  匹配度:1.4197134',
+      '文档:D:\Python\homework2\Lucene\英文分词\News_FenCi_379_Org.txt  匹配度:1.4197134'
+    ]
+    this.list.forEach(v => {
+      this.html += v + '<br>'
+    })
+  },
   mounted() { },
   methods: {
+    $_handleOpened() { },
+    $_handleConfirm() { },
+    $_handleCancel() { },
     buildingidChange(val) {
       const sameVal = this.buildinglist.find(v => v.buildingid === val)
       if (sameVal && 'layerlist' in sameVal && sameVal.layerlist instanceof Array && sameVal.layerlist.length) {

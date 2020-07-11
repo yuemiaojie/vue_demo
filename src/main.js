@@ -3,7 +3,7 @@ import App from './App'
 import router from './router'
 import store from '@/store/index.js'
 import api from './api'
-import backToTop from '@/components_config/back_top'
+import backToTop from '@/components-config/back-top'
 import * as filters from '@/filters/filters'
 import utils from '@utils'
 import cookie from 'js-cookie'
@@ -39,6 +39,7 @@ if (userInfo) {
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
+  document.title = (store.getters.language === 'zh' ? '正在加载...' : 'Loading...') || ' - '
   if (to.meta.notRequiresAuth) {
     next()
   } else {

@@ -4,7 +4,9 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const modulesFiles = require.context('./modules', true, /\.js$/)
+console.log(modulesFiles.keys())
 const modules = modulesFiles.keys().reduce((modules, modulePath) => {
+  console.log(modules)
   // set './app.js' => 'app'
   const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
   const value = modulesFiles(modulePath)
@@ -16,5 +18,11 @@ const Store = {
   modules,
   getters
 }
+
+const arr = [4, 2, 3, 4]
+arr.reduce((total, num) => {
+  // console.log(total) // 4 6 9
+  return total + num
+})
 
 export default new Vuex.Store(Store)

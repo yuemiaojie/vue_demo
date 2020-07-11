@@ -13,6 +13,7 @@
       :show-file-list="false"
       :before-upload="beforeUpload"
       class="upload-excel-box"
+      accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
       action=""
     >
       <el-button
