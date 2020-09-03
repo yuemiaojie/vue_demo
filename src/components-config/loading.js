@@ -28,16 +28,11 @@ const loading = {
 }
 
 export default {
-  install() {
+  install(Vue) {
     if (!Vue.$loading) {
       // 添加全局方法或属性
-      Vue.$loading = loading
+      Vue.prototype.$loading = loading
+      console.log(22222)
     }
-    // 注入
-    Vue.mixin({
-      created() {
-        this.$loading = Vue.$loading
-      }
-    })
   }
 }

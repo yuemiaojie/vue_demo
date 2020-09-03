@@ -1,46 +1,24 @@
 <template>
   <div id="home-wrap">
-    <div
-      v-swiper:mySwiper="swiperOption"
-      v-if="banners.length > 0"
-    >
+    <router-link :to="{path: '/excel/2'}">跳转至excel</router-link>
+    <div v-swiper:mySwiper="swiperOption" v-if="banners.length > 0">
       <div class="swiper-wrapper">
-        <div
-          v-for="(v, i) in banners"
-          :key="i"
-          class="swiper-slide"
-        >
-          <img
-            :src="v.pic"
-            class="banner"
-            alt=""
-          >
+        <div v-for="(v, i) in banners" :key="i" class="swiper-slide">
+          <img :src="v.pic" class="banner" alt="">
           <div class="desc-wrap">
             <h2 data-swiper-parallax-opacity="0.2">
               {{ v.tit }}
             </h2>
-            <div
-              data-swiper-parallax-opacity="0.2"
-              class="slide-desc"
-            >
+            <div data-swiper-parallax-opacity="0.2" class="slide-desc">
               {{ v.desc }}
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="pre-slide theme-color"
-        @click="slidePre"
-      >
-        <i
-          class="el-icon-arrow-left"
-          text="111"
-        />
+      <div class="pre-slide theme-color" @click="slidePre">
+        <i class="el-icon-arrow-left" text="111" />
       </div>
-      <div
-        class="next-slide theme-color"
-        @click="slideNext"
-      >
+      <div class="next-slide theme-color" @click="slideNext">
         <i class="el-icon-arrow-right" />
       </div>
     </div>
@@ -61,6 +39,8 @@ export default {
   data() {
     return {
       banners: [],
+      a: 2,
+      banners01: this,
       swiperOption: {
         autoHeight: true,
         centeredSlides: true,

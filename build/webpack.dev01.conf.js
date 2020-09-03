@@ -119,7 +119,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build_dev.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
 })
 

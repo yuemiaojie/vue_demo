@@ -58,6 +58,8 @@ export default {
     /**
      * script-loader：加载js的！  -->  require("script-loader!./file.js")
      */
+    // params：一种是路由跳转时携带过来的参数（刷新页面就会丢失），另一种则是路由地址中携带的参数（刷新页面不会丢失）
+    console.log(this.$route.params)
   },
   mounted() { },
   methods: {

@@ -5,55 +5,25 @@
     </h2>
     <div class="content">
       <div class="loginform-wrap">
-        <el-form
-          ref="form"
-          :rules="rules"
-          :model="form"
-          label-width="120px"
-        >
-          <el-form-item
-            :label="$t('login.userNameInpLabel')"
-            prop="userName"
-          >
-            <el-input
-              v-model="form.userName"
-              :placeholder="$t('login.userNameInpPlaceholder')"
-            >
-              <i
-                slot="prefix"
-                class="el-input__icon el-icon-user"
-              />
+        <el-form ref="form" :rules="rules" :model="form" label-width="120px">
+          <el-form-item :label="$t('login.userNameInpLabel')" prop="userName">
+            <el-input v-model="form.userName" :placeholder="$t('login.userNameInpPlaceholder')">
+              <i slot="prefix" class="el-input__icon el-icon-user" />
             </el-input>
           </el-form-item>
-          <el-form-item
-            :label="$t('login.passwordInpLabel')"
-            prop="password"
-          >
-            <el-input
-              v-model="form.password"
-              :placeholder="$t('login.passwordInpPlaceholder')"
-              show-password
-            >
-              <i
-                slot="prefix"
-                class="el-input__icon el-icon-lock"
-              />
+          <el-form-item :label="$t('login.passwordInpLabel')" prop="password">
+            <el-input v-model="form.password" :placeholder="$t('login.passwordInpPlaceholder')" show-password>
+              <i slot="prefix" class="el-input__icon el-icon-lock" />
             </el-input>
           </el-form-item>
           <el-row type="flex">
             <el-form-item>
-              <el-checkbox
-                v-model="form.savePassword"
-                size="mini"
-              >
+              <el-checkbox v-model="form.savePassword" size="mini">
                 {{ $t('login.saveLogin') }}
               </el-checkbox>
             </el-form-item>
             <el-form-item>
-              <el-button
-                type="primary"
-                @click="login('form')"
-              >
+              <el-button type="primary" @click="login('form')">
                 {{ $t('login.login') }}
               </el-button>
             </el-form-item>
@@ -101,7 +71,8 @@ export default {
       this.form.savePassword = true
     }
   },
-  mounted() { },
+  mounted() {
+  },
   methods: {
     login(formName) {
       this.$refs[formName].validate((valid) => {

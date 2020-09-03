@@ -9,10 +9,7 @@
         <!--将取消与确定按钮集成到内部-->
         <span>
           <el-button @click="$_handleCancel">取 消</el-button>
-          <el-button
-            type="primary"
-            @click="$_handleConfirm"
-          >
+          <el-button type="primary" @click="$_handleConfirm">
             确 定
           </el-button>
         </span>

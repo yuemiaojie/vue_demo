@@ -11,6 +11,8 @@ import ELEMENT from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import NProgress from 'nprogress'
 import VueI18n from 'vue-i18n'
+import moment from 'moment'
+// import loading from '@/components-config/loading'
 // import Mock from 'mockjs'
 // console.log()
 
@@ -61,6 +63,7 @@ router.afterEach((to, from) => {
 Vue.use(backToTop)
 Vue.use(ELEMENT)
 Vue.use(VueI18n)
+// Vue.use(loading)
 const i18n = new VueI18n({
   locale: store.getters.language,
   messages: {
@@ -79,6 +82,7 @@ Vue.prototype.$loading =
     text: 'Loading...',
     background: 'rgba(0, 0, 0, 0.5)'
   })
+Vue.prototype.$moment = moment
 
 // 禁止生产提示
 Vue.config.productionTip = false

@@ -19,7 +19,7 @@ export const asyncRoutes = [
           role: [1, 2, 3],
           icon: 'icon-shouye1'
         },
-        component: _ => import('@page/Home')
+        component: _ => import('@page/home')
       },
       {
         path: 'tinymce',
@@ -30,7 +30,7 @@ export const asyncRoutes = [
           role: [1, 2, 3],
           icon: 'icon-ai-edit'
         },
-        component: _ => import('@page/Tinymce')
+        component: _ => import('@page/tinymce')
       },
       {
         path: 'svga',
@@ -41,10 +41,10 @@ export const asyncRoutes = [
           role: [1, 2, 3],
           icon: 'icon-svg'
         },
-        component: _ => import('@page/Svga')
+        component: _ => import('@page/svga')
       },
       {
-        path: 'excel',
+        path: 'excel/:id?',
         name: 'excel',
         meta: {
           title: 'excel',
@@ -52,7 +52,7 @@ export const asyncRoutes = [
           role: [1, 2, 3],
           icon: 'icon-excel'
         },
-        component: _ => import('@page/Excel')
+        component: _ => import('@page/excel')
       },
       {
         path: 'summary',
@@ -65,7 +65,7 @@ export const asyncRoutes = [
           icon: 'icon-ceshi',
           submenu: true
         },
-        component: _ => import('@page/Transfer'),
+        component: _ => import('@page/transfer'),
         children: [
           {
             path: 'summarys',
@@ -76,7 +76,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/Summarys')
+            component: _ => import('@page/summarys')
           },
           {
             path: 'event-loop',
@@ -87,7 +87,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/Summarys/SummarysItem/EventLoop')
+            component: _ => import('@page/Summarys/summarysItem/eventLoop')
           }
         ]
       },
@@ -100,7 +100,7 @@ export const asyncRoutes = [
           role: [1, 2, 3],
           icon: 'icon-ceshi'
         },
-        component: _ => import('@page/Demo')
+        component: _ => import('@page/demo')
       }
     ]
   },
@@ -112,7 +112,7 @@ export const asyncRoutes = [
       enTitle: '',
       role: [1, 2, 3]
     },
-    component: resolve => require(['@page/Empty'], resolve)
+    component: resolve => require(['@page/empty'], resolve)
   },
   {
     path: '*',
@@ -122,6 +122,6 @@ export const asyncRoutes = [
       enTitle: '404',
       role: [1, 2, 3]
     },
-    component: resolve => require(['@page/Error/404'], resolve)
+    component: resolve => require(['@page/error/404'], resolve)
   }
 ]
