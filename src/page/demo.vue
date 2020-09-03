@@ -20,15 +20,16 @@ export default {
   async mounted() {
     const audioSculptor = new AudioSculptor()
     await audioSculptor.open({
-      workerPath: '/static/ffmpeg.js/ffmpeg-worker-mp4.js',
+      workerPath: '../../static/ffmpeg.js/ffmpeg-worker-mp4.js',
       MediaType: 'mp3'
     })
     const audio = new Audio('../../static/yiyue.mp3')
     const blob = await audioSculptor.toBlob(audio)
-    const { blob: clippedBlob } = await audioSculptor.clip(blob, 3, 7)
+    const { blob: clippedBlob, logs } = await audioSculptor.clip(blob, 3, 7)
     const clippedAudio = await audioSculptor.toAudio(clippedBlob)
-    this.src = URL.createObjectURL(clippedBlob)
-    console.log(blob, URL.createObjectURL(clippedBlob), clippedAudio)
+    console.log(clippedAudio.src)
+    this.src = clippedAudio.src
+    console.log(blob, clippedBlob, logs, clippedAudio)
   },
   methods: {
   }

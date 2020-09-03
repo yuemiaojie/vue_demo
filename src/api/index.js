@@ -54,6 +54,7 @@ axios.interceptors.response.use(
     const requestData = getRequestIdentify(response.config)
     removePeeding(requestData)
     if (response.status === 200) {
+      // return Promise.resolve(response.data || response)
       return Promise.resolve(response)
       // switch (response.data.code) {
       //   case 200:

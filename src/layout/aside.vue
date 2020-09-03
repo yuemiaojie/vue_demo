@@ -1,8 +1,5 @@
 <template>
-  <layout-menu
-    :routers="$store.getters.addRoutes.length > 0 ? $store.getters.addRoutes[0].children : []"
-    :base-path="'/'"
-  />
+  <layout-menu :routers="$store.getters.addRoutes.length > 0 ? $store.getters.addRoutes[0].children : []" :base-path="'/'" />
 </template>
 
 <script type="text/javascript">
