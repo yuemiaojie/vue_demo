@@ -1,26 +1,11 @@
 <template>
   <div id="file-wrap">
-    <el-upload
-      :http-request="upload"
-      :show-file-list="false"
-      multiple
-      action=""
-      list-type="text"
-    >
+    <el-upload :http-request="upload" :show-file-list="false" multiple action="" list-type="text">
       <div class="iframe-wrap">
-        <embed
-          src="http://file--upload.oss-cn-shanghai.aliyuncs.com/img/20200617144239PzXSGRBecd_001.svg"
-          frameborder="0"
-        >
-        <div
-          class="iframe-mask"
-          @click="handleClick"
-        />
+        <embed src="http://file--upload.oss-cn-shanghai.aliyuncs.com/img/20200617144239PzXSGRBecd_001.svg" frameborder="0">
+        <div class="iframe-mask" @click="handleClick" />
       </div>
-      <el-button
-        size="mini"
-        type="primary"
-      >
+      <el-button size="mini" type="primary">
         点击上传
       </el-button>
     </el-upload>
@@ -42,7 +27,7 @@ export default {
     fileFormat: {
       type: Array,
       default: _ => {
-        return ['jpg', 'png', 'jpeg', 'JPG', 'PNG', 'JPEG']
+        return ['jpg', 'png', 'jpeg', 'JPG', 'PNG', 'JPEG', 'mp3']
       }
     }
   },
@@ -77,6 +62,7 @@ export default {
 
       // 配置
       const client = new OSS(utils.OSSCli())
+      console.log(file);
       const fileStorageName = utils.getFileName(file.name)
       const relativePath = 'img/'
       const fileStorageSrc = relativePath + fileStorageName
