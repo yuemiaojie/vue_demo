@@ -54,28 +54,26 @@ axios.interceptors.response.use(
     const requestData = getRequestIdentify(response.config)
     removePeeding(requestData)
     if (response.status === 200) {
-      // return Promise.resolve(response.data || response)
-      return Promise.resolve(response)
-      // switch (response.data.code) {
-      //   case 200:
-      //     return Promise.resolve(response.data)
-      //   case 401:
-      //     // 如果验证信息失效，则跳转至登录页重新获取登录信息，取消、删除正在请求的所有的接口
-      //     window._axiosPromiseArr.forEach((v, i) => {
-      //       v.cancel()
-      //       delete window._axiosPromiseArr[i]
-      //     })
-      //     router.push('/login')
-      //     cookie.remove('userInfo')
-      //     store.commit('permission/DESTROY_ROUTES')
-      //     this.$store.commit('user/SET_USERINFO', {})
-      //     resetRouter()
-      //     console.warn('返回401啦，自动跳转至登录页！！！')
-      //     return Promise.reject(response)
-      //   default:
-      //     Message.error(response.data.message || '请求失败')
-      //     return Promise.reject(response)
-      // }
+      switch (response.data.code) {
+        case 200:
+          return Promise.resolve(response.data)
+        case 401:
+          // 如果验证信息失效，则跳转至登录页重新获取登录信息，取消、删除正在请求的所有的接口
+          window._axiosPromiseArr.forEach((v, i) => {
+            v.cancel()
+            delete window._axiosPromiseArr[i]
+          })
+          router.push('/login')
+          cookie.remove('userInfo')
+          store.commit('permission/DESTROY_ROUTES')
+          this.$store.commit('user/SET_USERINFO', {})
+          resetRouter()
+          console.warn('返回401啦，自动跳转至登录页！！！')
+          return Promise.reject(response)
+        default:
+          Message.error(response.data.message || '请求失败')
+          return Promise.reject(response)
+      }
     } else {
       return Promise.reject(response)
     }

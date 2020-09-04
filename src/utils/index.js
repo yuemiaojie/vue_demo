@@ -139,8 +139,8 @@ const utilsJs = {
   OSSCli() {
     const client = {
       region: 'oss-cn-shanghai',
-      accessKeyId: 'LTAIhzJLcNHBHrbG',
-      accessKeySecret: 'OzddYz9qnphLfO8Lm2aUcfZPsBkeBs',
+      accessKeyId: '',
+      accessKeySecret: '',
       bucket: 'file--upload',
       stsToken: ''
     }
