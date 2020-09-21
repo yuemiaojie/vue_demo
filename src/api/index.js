@@ -1,13 +1,13 @@
 import axios from 'axios'
 import Qs from 'qs'
 import baseURL from './config/base'
-// import router from '@router'
+import router from '@router'
 import get from './http_methods/get'
 import post from './http_methods/post'
-// import cookie from 'js-cookie'
-// import { resetRouter } from '@router'
-// import store from '@store'
-// import { Message } from 'element-ui'
+import cookie from 'js-cookie'
+import { resetRouter } from '@router'
+import store from '@store'
+import { Message } from 'element-ui'
 
 axios.defaults.baseURL = baseURL
 axios.defaults.timeout = 1 * 10000

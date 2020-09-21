@@ -62,7 +62,6 @@ export default {
 
       // 配置
       const client = new OSS(utils.OSSCli())
-      console.log(file);
       const fileStorageName = utils.getFileName(file.name)
       const relativePath = 'img/'
       const fileStorageSrc = relativePath + fileStorageName
