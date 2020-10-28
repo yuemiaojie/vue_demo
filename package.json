@@ -24,7 +24,7 @@
     "file-saver": "^2.0.2",
     "js-base64": "^2.5.2",
     "js-cookie": "^2.2.1",
-    "moment": "^2.26.0",
+    "moment": "^2.29.1",
     "nprogress": "^0.2.0",
     "qs": "^6.9.1",
     "screenfull": "^5.0.2",
