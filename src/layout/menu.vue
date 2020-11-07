@@ -1,59 +1,30 @@
 <template>
   <div id="layout-menu">
-    <el-menu
-      :default-active="$route.path"
-      :collapse="$store.getters.sidebarStatus === '1' ? true : false"
-      mode="vertical"
-      class="el-menu-vertical-demo"
-    >
-      <div
-        v-for="(item, index) in routers"
-        :key="index"
-      >
-        <el-submenu
-          v-if="item.meta.submenu"
-          :index="item.name"
-        >
+    <el-menu :default-active="$route.path" :collapse="$store.getters.sidebarStatus === '1' ? true : false" mode="vertical" class="el-menu-vertical-demo">
+      <div v-for="(item, index) in routers" :key="index">
+        <el-submenu v-if="item.meta.submenu" :index="item.name">
           <template slot="title">
             <i :class="'iconfont ' + item.meta.icon" />
             <span slot="title">{{ $store.getters.language === 'zh' ? item.meta.title : item.meta.enTitle }}</span>
           </template>
           <el-menu-item-group>
-            <div
-              v-for="(childItem, childIndex) in item.children"
-              :key="childIndex"
-            >
-              <el-menu-item
-                v-if="!item.hidden"
-                :index="resolvePath(item.path + '/' + childItem.path)"
-                @click="toLink(resolvePath(item.path + '/' + childItem.path))"
-              >
+            <div v-for="(childItem, childIndex) in item.children" :key="childIndex">
+              <el-menu-item v-if="!item.hidden" :index="resolvePath(item.path + '/' + childItem.path)" @click="toLink(resolvePath(item.path + '/' + childItem.path))">
                 <p>
                   <i :class="'iconfont ' + childItem.meta.icon" />
-                  <span>{{ childItem.name }}</span>
+                  <span>{{ $store.getters.language === 'zh' ? childItem.meta.title : childItem.meta.enTitle }}</span>
                 </p>
               </el-menu-item>
-              <AsideMenus
-                v-if="childItem.children && childItem.children.length > 0"
-                :routers="childItem.children"
-                :base-path="resolvePath(childItem.path)"
-              />
+              <AsideMenus v-if="childItem.children && childItem.children.length > 0" :routers="childItem.children" :base-path="resolvePath(childItem.path)" />
             </div>
           </el-menu-item-group>
         </el-submenu>
         <div v-else>
-          <el-menu-item
-            :index="resolvePath(item.path)"
-            @click="toLink(resolvePath(item.path))"
-          >
+          <el-menu-item :index="resolvePath(item.path)" @click="toLink(resolvePath(item.path))">
             <i :class="'iconfont ' + item.meta.icon" />
             <span slot="title">{{ $store.getters.language === 'zh' ? item.meta.title : item.meta.enTitle }}</span>
           </el-menu-item>
-          <AsideMenus
-            v-if="item.children && item.children.length > 0"
-            :routers="item.children"
-            :base-path="resolvePath(item.path)"
-          />
+          <AsideMenus v-if="item.children && item.children.length > 0" :routers="item.children" :base-path="resolvePath(item.path)" />
         </div>
       </div>
     </el-menu>

@@ -41,7 +41,6 @@ const getters = {}
 const actions = {}
 const mutations = {
   GENERATE_ROUTES(state, role) {
-    console.log(2222, role, asyncRoutes)
     state.addRoutes = filterRouters(role, asyncRoutes)
   },
   DESTROY_ROUTES(state, role) {

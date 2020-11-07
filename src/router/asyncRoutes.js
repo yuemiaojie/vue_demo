@@ -93,14 +93,62 @@ export const asyncRoutes = [
       },
       {
         path: 'demo',
+        redirect: 'demo/demos',
         name: 'demo',
         meta: {
-          title: 'demo',
+          title: '测试',
           enTitle: 'demo',
           role: [1, 2, 3],
-          icon: 'icon-ceshi'
+          icon: 'icon-ceshi',
+          submenu: true
         },
-        component: _ => import('@page/demo')
+        component: _ => import('@page/transfer'),
+        children: [
+          {
+            path: 'demo001',
+            name: 'demo001',
+            meta: {
+              title: '截取音频',
+              enTitle: 'demo001',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/截取音频.vue')
+          },
+          {
+            path: 'demo002',
+            name: 'demo002',
+            meta: {
+              title: 'console的各种API总结',
+              enTitle: 'demo002',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/console的各种API总结.vue')
+          },
+          {
+            path: 'demo003',
+            name: 'demo003',
+            meta: {
+              title: 'svg学习',
+              enTitle: 'demo003',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/svg学习.vue')
+          },
+          {
+            path: 'demo004',
+            name: 'demo004',
+            meta: {
+              title: '判断utf-8编码格式',
+              enTitle: 'demo004',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/判断utf-8编码格式.vue')
+          }
+        ]
       }
     ]
   },

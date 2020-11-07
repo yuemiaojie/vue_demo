@@ -84,7 +84,7 @@ const utilsJs = {
   },
   // 效验手机号
   valiPhone(val) {
-    var reg = /^[1][3,4,5,7,8][0-9]{9}$/
+    var reg = /^[1][0-9][0-9]{9}$/
     if (reg.test(val)) return true
   },
   // 文件名截取
@@ -103,7 +103,7 @@ const utilsJs = {
     return fileSize / 1024 / 1024 <= size
   },
   // 判断属性是否在这个对象中
-  isHas(obj, key) {
+  hasOwn(obj, key) {
     return obj.hasOwnProperty(key)
   },
   // 验证图片链接是否有效
@@ -155,6 +155,28 @@ const utilsJs = {
   },
   getCurTime(timeStamp) {
     return moment(timeStamp).format('YYYY-MM-DD HH:mm:ss')
+  },
+  // 防抖
+  debounce(fn, space) {
+    let task = null
+    return function () {
+      if (task) {
+        clearTimeout(task)
+      }
+      task = setTimeout(_ => { fn.call(this) }, space)
+    }
+  },
+  // 节流
+  throttle(fn, space) {
+    let task = null
+    return function () {
+      if (!task) {
+        task = setTimeout(function () {
+          task = null
+          fn.call(this)
+        }, space)
+      }
+    }
   }
 }
 
