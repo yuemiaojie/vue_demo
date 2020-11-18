@@ -147,6 +147,50 @@ export const asyncRoutes = [
               icon: 'icon-ceshi'
             },
             component: _ => import('@page/demo/判断utf-8编码格式.vue')
+          },
+          {
+            path: 'demo005',
+            name: 'demo005',
+            meta: {
+              title: 'postmate（iframe通信）',
+              enTitle: 'demo005',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/postmate（iframe通信）.vue')
+          },
+          {
+            path: 'demo006',
+            name: 'demo006',
+            meta: {
+              title: 'iframe通信',
+              enTitle: 'demo006',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/iframe通信.vue')
+          },
+          {
+            path: 'demo007',
+            name: 'demo007',
+            meta: {
+              title: '小数点精度问题',
+              enTitle: 'demo007',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/小数点精度问题.vue')
+          },
+          {
+            path: 'demo008',
+            name: 'demo008',
+            meta: {
+              title: 'base64转文件对象',
+              enTitle: 'demo008',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/base64转文件对象.vue')
           }
         ]
       }

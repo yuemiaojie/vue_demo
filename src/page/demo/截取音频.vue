@@ -63,7 +63,7 @@ export default {
               var imgData = {
                 src: data.res.requestUrls[0],
                 alt: file.name,
-                id: utils.randomString('id:', 12),
+                id: utils.uuid(),
                 detailsBtnShowStatus: false
               }
               console.log('上传成功 //----// ', imgData)

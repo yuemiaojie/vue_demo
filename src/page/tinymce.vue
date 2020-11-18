@@ -1,10 +1,6 @@
 <template>
   <div id="tinymce-wrap">
-    <editor
-      v-model="tinymceHtml"
-      :init="init"
-      api-key="2ctgucap6d0w5y89jgup54r5mbdun849xi351gs86alz2754"
-    />
+    <editor v-model="tinymceHtml" :init="init" api-key="2ctgucap6d0w5y89jgup54r5mbdun849xi351gs86alz2754" />
     <div>{{ tinymceHtml }}</div>
   </div>
 </template>
@@ -56,7 +52,7 @@ export default {
           var imgData = {
             src: data.res.requestUrls[0],
             alt: file.name,
-            id: utils.randomString('id:', 12),
+            id: utils.uuid(),
             detailsBtnShowStatus: false
           }
           succFun(imgData.src)
@@ -95,7 +91,7 @@ export default {
             var imgData = {
               src: data.res.requestUrls[0],
               alt: file.name,
-              id: utils.randomString('id:', 12),
+              id: utils.uuid(),
               detailsBtnShowStatus: false
             }
             callback(imgData.src)
