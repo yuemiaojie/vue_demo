@@ -19,6 +19,8 @@
     "ali-oss": "^6.8.0",
     "audio-sculptor": "^1.5.4",
     "axios": "^0.19.0",
+    "better-scroll": "^2.0.0",
+    "dayjs": "^1.9.6",
     "element-ui": "^2.13.2",
     "ffmpeg.js": "^4.2.9003",
     "file-saver": "^2.0.2",

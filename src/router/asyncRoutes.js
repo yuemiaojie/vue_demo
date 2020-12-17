@@ -191,6 +191,83 @@ export const asyncRoutes = [
               icon: 'icon-ceshi'
             },
             component: _ => import('@page/demo/base64转文件对象.vue')
+          },
+          {
+            path: 'demo010',
+            name: 'demo010',
+            meta: {
+              title: 'better-scroll',
+              enTitle: 'demo010',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/better-scroll.vue')
+          },
+          {
+            path: 'demo011',
+            name: 'demo011',
+            meta: {
+              title: 'base64编码入门',
+              enTitle: 'demo011',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/base64编码入门.vue')
+          },
+          {
+            path: 'demo012',
+            name: 'demo012',
+            meta: {
+              title: 'css的aspect-ratio(横纵比)练习',
+              enTitle: 'demo012',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/css的aspect-ratio(横纵比)练习.vue')
+          },
+          {
+            path: 'demo013',
+            name: 'demo013',
+            meta: {
+              title: 'js自定义事件',
+              enTitle: 'demo013',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/js自定义事件.vue')
+          },
+          {
+            path: 'demo014',
+            name: 'demo014',
+            meta: {
+              title: 'http与https的原理',
+              enTitle: 'demo014',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/http与https的原理.vue')
+          },
+          {
+            path: 'demo015',
+            name: 'demo015',
+            meta: {
+              title: 'dayjs',
+              enTitle: 'demo015',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/dayjs.vue')
+          },
+          {
+            path: 'demo016',
+            name: 'demo016',
+            meta: {
+              title: '产生服从均匀分布随机数',
+              enTitle: 'demo016',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/产生服从均匀分布随机数.vue')
           }
         ]
       }

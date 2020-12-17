@@ -1,6 +1,5 @@
 <template>
   <div id="home-wrap">
-    <router-link :to="{path: '/excel/2'}">跳转至excel</router-link>
     <div v-swiper:mySwiper="swiperOption" v-if="banners.length > 0">
       <div class="swiper-wrapper">
         <div v-for="(v, i) in banners" :key="i" class="swiper-slide">
