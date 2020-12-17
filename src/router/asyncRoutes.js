@@ -268,6 +268,17 @@ export const asyncRoutes = [
               icon: 'icon-ceshi'
             },
             component: _ => import('@page/demo/产生服从均匀分布随机数.vue')
+          },
+          {
+            path: 'demo017',
+            name: 'demo017',
+            meta: {
+              title: 'vue自定义事件的绑定',
+              enTitle: 'demo017',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/vue自定义事件的绑定.vue')
           }
         ]
       }

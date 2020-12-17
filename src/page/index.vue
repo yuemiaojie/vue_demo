@@ -62,4 +62,7 @@ export default {
 </script>
 
 <style lang="scss">
+.el-container {
+  overflow: hidden;
+}
 </style>

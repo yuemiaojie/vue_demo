@@ -73,7 +73,6 @@ export default {
 
 <style lang="scss">
 #layout-menu {
-  border-right: 1px solid #efefef;
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     max-width: 200px;
     min-width: 100px;

@@ -140,7 +140,7 @@ const utilsJs = {
   getCurTime(timeStamp) {
     return moment(timeStamp).format('YYYY-MM-DD HH:mm:ss')
   },
-  // 防抖
+  // 防抖（规定的时间如果多次触发事件，重新计算定时器，以最后一次定时器为准）
   debounce(fn, space) {
     let task = null
     return function () {
@@ -150,7 +150,7 @@ const utilsJs = {
       task = setTimeout(_ => { fn.call(this) }, space)
     }
   },
-  // 节流
+  // 节流（规定的时间只能触发一次）
   throttle(fn, space) {
     let task = null
     return function () {

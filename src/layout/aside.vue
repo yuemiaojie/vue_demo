@@ -1,5 +1,7 @@
 <template>
-  <layout-menu :routers="$store.getters.addRoutes.length > 0 ? $store.getters.addRoutes[0].children : []" :base-path="'/'" />
+  <el-aside width="200px" style="border-right: 1px solid #efefef;">
+    <layout-menu :routers="$store.getters.addRoutes.length > 0 ? $store.getters.addRoutes[0].children : []" :base-path="'/'" />
+  </el-aside>
 </template>
 
 <script type="text/javascript">
