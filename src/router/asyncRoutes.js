@@ -279,6 +279,28 @@ export const asyncRoutes = [
               icon: 'icon-ceshi'
             },
             component: _ => import('@page/demo/vue自定义事件的绑定.vue')
+          },
+          {
+            path: 'demo018',
+            name: 'demo018',
+            meta: {
+              title: 'map标签学习（图像热点）',
+              enTitle: 'demo018',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/map标签学习（图像热点）.vue')
+          },
+          {
+            path: 'demo019',
+            name: 'demo019',
+            meta: {
+              title: 'vue实现抽奖功能',
+              enTitle: 'demo019',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/vue实现抽奖功能.vue')
           }
         ]
       }
