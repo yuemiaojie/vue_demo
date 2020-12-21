@@ -17,7 +17,7 @@ import OSS from 'ali-oss'
 import utils from '@/utils'
 
 export default {
-  name: '',
+  name: 'Upload',
   components: {},
   props: {
     fileSize: {

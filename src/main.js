@@ -14,6 +14,7 @@ import VueI18n from 'vue-i18n'
 import moment from 'moment'
 import Directives from '@/directives'
 // import loading from '@/components-config/loading'
+import Upload from '@/components-config/upload'
 // import Mock from 'mockjs'
 // console.log()
 
@@ -65,6 +66,7 @@ Vue.use(backToTop)
 Vue.use(ELEMENT)
 Vue.use(VueI18n)
 Vue.use(Directives)
+Vue.use(Upload)
 // Vue.use(loading)
 const i18n = new VueI18n({
   locale: store.getters.language,
