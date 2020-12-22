@@ -6,6 +6,7 @@ import api from './api'
 import backToTop from '@/components-config/back-top'
 import * as filters from '@/filters/filters'
 import utils from '@utils'
+import log from '@utils/log'
 import cookie from 'js-cookie'
 import ELEMENT from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -87,6 +88,7 @@ Vue.prototype.$loading =
     background: 'rgba(0, 0, 0, 0.5)'
   })
 Vue.prototype.$moment = moment
+Vue.prototype.$log = log
 
 // 禁止生产提示
 Vue.config.productionTip = false

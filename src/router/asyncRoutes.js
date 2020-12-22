@@ -295,12 +295,34 @@ export const asyncRoutes = [
             path: 'demo019',
             name: 'demo019',
             meta: {
-              title: 'vue实现抽奖功能',
+              title: 'vue实现抽奖功能（大转盘）',
               enTitle: 'demo019',
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/vue实现抽奖功能.vue')
+            component: _ => import('@page/demo/vue实现抽奖功能（大转盘）.vue')
+          },
+          {
+            path: 'demo020',
+            name: 'demo020',
+            meta: {
+              title: '打印封装',
+              enTitle: 'demo020',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/打印封装.vue')
+          },
+          {
+            path: 'demo021',
+            name: 'demo021',
+            meta: {
+              title: 'vue实现抽奖功能（九宫格）',
+              enTitle: 'demo021',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _ => import('@page/demo/vue实现抽奖功能（九宫格）.vue')
           }
         ]
       }

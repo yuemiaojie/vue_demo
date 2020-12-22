@@ -17,10 +17,4 @@ const Store = {
   getters
 }
 
-const arr = [4, 2, 3, 4]
-arr.reduce((total, num) => {
-  // console.log(total) // 4 6 9
-  return total + num
-})
-
 export default new Vuex.Store(Store)
