@@ -12,7 +12,7 @@ const data = {
             username: Mock.Random.cname(),
             roles: [1],
             id: Mock.Random.id(),
-            headImg: 'https://public-resource-oss.oss-cn-shanghai.aliyuncs.com/0/20200605150310/1/20180429111927_4i2Ks.jpeg'
+            headImg: 'https://public-resource-oss.oss-cn-shanghai.aliyuncs.com/0/20201225115740/1/head_portrait.png'
           },
           message: '登陆成功'
         }

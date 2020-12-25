@@ -1,93 +1,52 @@
 <template>
-  <el-header id="header-wrap">
-    <el-breadcrumb
-      class="my-breadcrumb"
-      separator-class="el-icon-arrow-right"
-    >
-      <el-breadcrumb-item
-        v-for="(v, i) in $route.matched"
-        :key="i"
-        :to="{path: v.path}"
-      >
+  <el-header id="header-wrapper" style="height: 40px">
+    <!-- 导航栏 -->
+    <el-breadcrumb class="my-breadcrumb" separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item v-for="(v, i) in $route.matched" :key="i" class="el-breadcrumb-item" @click.native="toLink(v.path)">
         {{ v.meta.title }}
       </el-breadcrumb-item>
     </el-breadcrumb>
-    <el-dropdown
-      trigger="click"
-      @command="pageCommand"
-    >
-      <span class="setting-btn">
+    <!-- 设置 -->
+    <el-dropdown trigger="click" @command="pageCommand">
+      <el-button type="text" size="mini" class="page-setting_btn">
         设置
         <i class="el-icon-arrow-down" />
-      </span>
+      </el-button>
+
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item command="setTheme">
           更换主题色
         </el-dropdown-item>
-        <el-dropdown-item
-          divided
-          command="screenfull"
-        >
+        <el-dropdown-item divided command="screenfull">
           全屏模式
         </el-dropdown-item>
-        <el-dropdown-item
-          divided
-          command="handleSidebar"
-        >
+        <el-dropdown-item divided command="handleSidebar">
           切换侧边栏
         </el-dropdown-item>
-        <el-dropdown-item
-          divided
-          command="handleLanguage"
-        >
+        <el-dropdown-item divided command="handleLanguage">
           切换语言
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
-    <el-drawer
-      :visible.sync="drawer"
-      :with-header="false"
-    >
-      <el-color-picker
-        v-model="themeColor"
-        :predefine="predefineColors"
-        class="theme-color-picker"
-        size="medium"
-        @change="changeColor"
-      />
+    <!-- 设置里的主题色 -->
+    <el-drawer :visible.sync="drawer" :with-header="false">
+      <el-color-picker v-model="themeColor" :predefine="predefineColors" class="theme-color-picker" size="medium" @change="changeColor" />
       <div class="theme-color-panel theme-bgc" />
     </el-drawer>
 
-    <el-dropdown
-      trigger="click"
-      @command="userCommand"
-    >
-      <el-avatar
-        :src="$store.getters.userInfo.headImg"
-        class="head-portrait"
-      >
+    <el-dropdown trigger="click" @command="userCommand">
+      <el-avatar :src="$store.getters.userInfo.headImg" class="head-portrait">
         <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png">
       </el-avatar>
 
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item
-          disabled
-          command="handlePersonalData"
-        >
+        <el-dropdown-item disabled command="handlePersonalData">
           编辑个人资料
         </el-dropdown-item>
-        <el-dropdown-item
-          disabled
-          divided
-          command="changePassword"
-        >
+        <el-dropdown-item disabled divided command="changePassword">
           修改密码
         </el-dropdown-item>
-        <el-dropdown-item
-          command="loginOut"
-          divided
-          @click="loginOut"
-        >
+        <el-dropdown-item command="loginOut" divided @click="loginOut">
           退出登录
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -126,6 +85,7 @@ export default {
     this.themeColor = localStorage.getItem('themeColor') || theme.themeColor
   },
   mounted() {
+    console.log(this.$route.matched)
     screenfull.on('change', _ => {
       if (screenfull.isEnabled) {
         if (screenfull.isFullscreen) {
@@ -195,13 +155,21 @@ export default {
           }
         })
       })
+    },
+    toLink(path = '/') {
+      path = path || '/'
+      if (this.$route.path === path) {
+        this.$router.push('/empty')
+      } else {
+        this.$router.push(path)
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-#header-wrap {
+#header-wrapper {
   display: flex;
   align-items: center;
   background-color: #ffffff;
@@ -225,7 +193,7 @@ export default {
 }
 </style>
 <style lang="scss">
-#header-wrap {
+#header-wrapper {
   .theme-color-picker {
     position: absolute;
     top: 40%;
@@ -242,6 +210,21 @@ export default {
     left: 0;
     width: 100%;
     height: 80px;
+  }
+  .page-setting_btn {
+    margin-right: 10px;
+  }
+  .el-breadcrumb {
+    font-size: 13px;
+    .el-breadcrumb-item {
+      .el-breadcrumb__inner {
+        cursor: pointer;
+      }
+    }
+  }
+  .el-avatar {
+    width: 25px;
+    height: 25px;
   }
 }
 </style>

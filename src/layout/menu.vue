@@ -1,6 +1,6 @@
 <template>
   <div id="layout-menu">
-    <el-menu :default-active="$route.path" :collapse="$store.getters.sidebarStatus === '1' ? true : false" mode="vertical" class="el-menu-vertical-demo">
+    <el-menu :default-active="$route.path" :collapse="$store.getters.sidebarStatus === '1' ? true : false" :collapse-transition="false" mode="vertical" class="el-menu-vertical-demo">
       <div v-for="(item, index) in routers" :key="index">
         <el-submenu v-if="item.meta.submenu" :index="item.name">
           <template slot="title">
@@ -9,7 +9,7 @@
           </template>
           <el-menu-item-group>
             <div v-for="(childItem, childIndex) in item.children" :key="childIndex">
-              <el-menu-item v-if="!item.hidden" :index="resolvePath(item.path + '/' + childItem.path)" @click="toLink(resolvePath(item.path + '/' + childItem.path))">
+              <el-menu-item v-if="!item.hidden" :index="resolvePath(item.path + '/' + childItem.path)" style="padding-left: 10px;" @click="toLink(resolvePath(item.path + '/' + childItem.path))">
                 <p>
                   <i :class="'iconfont ' + childItem.meta.icon" />
                   <span>{{ $store.getters.language === 'zh' ? childItem.meta.title : childItem.meta.enTitle }}</span>
@@ -20,7 +20,7 @@
           </el-menu-item-group>
         </el-submenu>
         <div v-else>
-          <el-menu-item :index="resolvePath(item.path)" @click="toLink(resolvePath(item.path))">
+          <el-menu-item :index="resolvePath(item.path)" style="padding-left: 10px;" @click="toLink(resolvePath(item.path))">
             <i :class="'iconfont ' + item.meta.icon" />
             <span slot="title">{{ $store.getters.language === 'zh' ? item.meta.title : item.meta.enTitle }}</span>
           </el-menu-item>
@@ -61,10 +61,10 @@ export default {
       return path.resolve(this.basePath, routePath)
     },
     toLink(path) {
-      if (this.$route.path === path) {
+      if (this.$route.path.split(':')[0] === path.split(':')[0]) {
         this.$router.push('/empty')
       } else {
-        this.$router.push(path)
+        this.$router.push(path.split(':')[0])
       }
     }
   }
@@ -73,10 +73,6 @@ export default {
 
 <style lang="scss">
 #layout-menu {
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    max-width: 200px;
-    min-width: 100px;
-  }
   .el-menu {
     border: none;
   }
@@ -87,17 +83,34 @@ export default {
       white-space: nowrap;
     }
   }
-  .el-menu--collapse .el-menu-item span,
-  .el-menu--collapse .el-submenu > .el-submenu__title span {
-    height: 0;
-    width: 0;
-    overflow: hidden;
-    visibility: hidden;
-    display: inline-block;
+
+  .el-menu--collapse {
+    width: 40px;
+    .el-menu-item {
+      padding-left: 20px;
+    }
+    .el-menu-item span,
+    .el-submenu > .el-submenu__title span {
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      visibility: hidden;
+      display: inline-block;
+    }
+    .el-menu-item .el-submenu__icon-arrow,
+    .el-submenu > .el-submenu__title .el-submenu__icon-arrow {
+      display: none;
+    }
+    .el-submenu__title,
+    .el-tooltip {
+      padding: 0 10px !important;
+      text-align: center;
+    }
   }
-  .el-menu--collapse .el-menu-item .el-submenu__icon-arrow,
-  .el-menu--collapse .el-submenu > .el-submenu__title .el-submenu__icon-arrow {
-    display: none;
+
+  .el-submenu .el-menu-item {
+    padding: 0 10px;
+    min-width: auto;
   }
 }
 </style>

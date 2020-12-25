@@ -1,3 +1,6 @@
+// 开发环境不使用懒加载, 因为懒加载页面太多的话会造成webpack热更新太慢, 所以只有生产环境使用懒加载
+const _import = require('./import-' + process.env.NODE_ENV)
+
 export const asyncRoutes = [
   {
     path: '/',
@@ -8,7 +11,7 @@ export const asyncRoutes = [
       enTitle: 'management platform',
       role: [1, 2, 3]
     },
-    component: _ => import('@page'),
+    component: _import('index'),
     children: [
       {
         path: 'home',
@@ -19,7 +22,7 @@ export const asyncRoutes = [
           role: [1, 2, 3],
           icon: 'icon-shouye1'
         },
-        component: _ => import('@page/home')
+        component: _import('home')
       },
       {
         path: 'tinymce',
@@ -30,7 +33,7 @@ export const asyncRoutes = [
           role: [1, 2, 3],
           icon: 'icon-ai-edit'
         },
-        component: _ => import('@page/tinymce')
+        component: _import('tinymce')
       },
       {
         path: 'svga',
@@ -41,7 +44,7 @@ export const asyncRoutes = [
           role: [1, 2, 3],
           icon: 'icon-svg'
         },
-        component: _ => import('@page/svga')
+        component: _import('svga')
       },
       {
         path: 'excel/:id?',
@@ -52,7 +55,7 @@ export const asyncRoutes = [
           role: [1, 2, 3],
           icon: 'icon-excel'
         },
-        component: _ => import('@page/excel')
+        component: _import('excel')
       },
       {
         path: 'summary',
@@ -65,7 +68,7 @@ export const asyncRoutes = [
           icon: 'icon-ceshi',
           submenu: true
         },
-        component: _ => import('@page/transfer'),
+        component: _import('transfer'),
         children: [
           {
             path: 'summarys',
@@ -76,7 +79,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/summarys')
+            component: _import('summarys')
           },
           {
             path: 'event-loop',
@@ -87,7 +90,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/Summarys/summarysItem/eventLoop')
+            component: _import('summarys/summarysItem/eventLoop')
           }
         ]
       },
@@ -102,7 +105,7 @@ export const asyncRoutes = [
           icon: 'icon-ceshi',
           submenu: true
         },
-        component: _ => import('@page/transfer'),
+        component: _import('transfer'),
         children: [
           {
             path: 'demo001',
@@ -113,7 +116,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/截取音频.vue')
+            component: _import('demo/截取音频')
           },
           {
             path: 'demo002',
@@ -124,7 +127,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/console的各种API总结.vue')
+            component: _import('demo/console的各种API总结')
           },
           {
             path: 'demo003',
@@ -135,7 +138,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/svg学习.vue')
+            component: _import('demo/svg学习')
           },
           {
             path: 'demo004',
@@ -146,7 +149,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/判断utf-8编码格式.vue')
+            component: _import('demo/判断utf-8编码格式')
           },
           {
             path: 'demo005',
@@ -157,7 +160,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/postmate（iframe通信）.vue')
+            component: _import('demo/postmate（iframe通信）')
           },
           {
             path: 'demo006',
@@ -168,7 +171,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/iframe通信.vue')
+            component: _import('demo/iframe通信')
           },
           {
             path: 'demo007',
@@ -179,7 +182,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/小数点精度问题.vue')
+            component: _import('demo/小数点精度问题')
           },
           {
             path: 'demo008',
@@ -190,7 +193,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/base64转文件对象.vue')
+            component: _import('demo/base64转文件对象')
           },
           {
             path: 'demo010',
@@ -201,7 +204,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/better-scroll.vue')
+            component: _import('demo/better-scroll')
           },
           {
             path: 'demo011',
@@ -212,7 +215,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/base64编码入门.vue')
+            component: _import('demo/base64编码入门')
           },
           {
             path: 'demo012',
@@ -223,7 +226,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/css的aspect-ratio(横纵比)练习.vue')
+            component: _import('demo/css的aspect-ratio(横纵比)练习')
           },
           {
             path: 'demo013',
@@ -234,7 +237,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/js自定义事件.vue')
+            component: _import('demo/js自定义事件')
           },
           {
             path: 'demo014',
@@ -245,7 +248,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/http与https的原理.vue')
+            component: _import('demo/http与https的原理')
           },
           {
             path: 'demo015',
@@ -256,7 +259,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/dayjs.vue')
+            component: _import('demo/dayjs')
           },
           {
             path: 'demo016',
@@ -267,7 +270,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/产生服从均匀分布随机数.vue')
+            component: _import('demo/产生服从均匀分布随机数')
           },
           {
             path: 'demo017',
@@ -278,7 +281,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/vue自定义事件的绑定.vue')
+            component: _import('demo/vue自定义事件的绑定')
           },
           {
             path: 'demo018',
@@ -289,7 +292,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/map标签学习（图像热点）.vue')
+            component: _import('demo/map标签学习（图像热点）')
           },
           {
             path: 'demo019',
@@ -300,7 +303,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/vue实现抽奖功能（大转盘）.vue')
+            component: _import('demo/vue实现抽奖功能（大转盘）')
           },
           {
             path: 'demo020',
@@ -311,7 +314,7 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/打印封装.vue')
+            component: _import('demo/打印封装')
           },
           {
             path: 'demo021',
@@ -322,7 +325,18 @@ export const asyncRoutes = [
               role: [1, 2, 3],
               icon: 'icon-ceshi'
             },
-            component: _ => import('@page/demo/vue实现抽奖功能（九宫格）.vue')
+            component: _import('demo/vue实现抽奖功能（九宫格）')
+          },
+          {
+            path: 'demo022',
+            name: 'demo022',
+            meta: {
+              title: 'require与import语法',
+              enTitle: 'demo022',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _import('demo/require与import语法')
           }
         ]
       }

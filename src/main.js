@@ -44,7 +44,6 @@ if (userInfo) {
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  document.title = (store.getters.language === 'zh' ? '正在加载...' : 'Loading...') || ' - '
   if (to.meta.notRequiresAuth) {
     next()
   } else {
