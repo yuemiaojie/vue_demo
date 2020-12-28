@@ -91,6 +91,17 @@ export const asyncRoutes = [
               icon: 'icon-ceshi'
             },
             component: _import('summarys/summarysItem/eventLoop')
+          },
+          {
+            path: 'aaa/:id?',
+            name: 'aaa',
+            meta: {
+              title: 'aaa',
+              enTitle: 'aaa',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _import('summarys/summarysItem/aaa')
           }
         ]
       },

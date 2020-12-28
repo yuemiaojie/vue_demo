@@ -58,7 +58,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to, from) => {
   NProgress.done()
-  document.title = (store.getters.language === 'zh' ? to.meta.title : to.meta.enTitle) || ' - '
+  document.title = store.getters.language === 'zh' ? to.meta.title : to.meta.enTitle
 })
 
 // 注册组件

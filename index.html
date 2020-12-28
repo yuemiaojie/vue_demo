@@ -25,43 +25,6 @@
       font-size: 80px;
       letter-spacing: 5px;
     }
-
-    .mainLogo::after {
-      content: " ";
-      position: absolute;
-      left: 0px;
-      top: 0;
-      width: 2px;
-      height: 200px;
-      -webkit-transform: rotate(45deg);
-      transform: rotate(45deg);
-      transform-origin: top;
-      background-color: #ffffff;
-      -webkit-animation: mymove 2s infinite;
-      animation: mymove 2s infinite;
-    }
-
-    @-webkit-keyframes mymove {
-      from {
-        left: 0;
-      }
-
-      to {
-        left: -webkit-calc(100% + 42px);
-        left: calc(100% + 42px);
-      }
-    }
-
-    @keyframes mymove {
-      from {
-        left: 0;
-      }
-
-      to {
-        left: -webkit-calc(100% + 42px);
-        left: calc(100% + 42px);
-      }
-    }
   </style>
 </head>
 
