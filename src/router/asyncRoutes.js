@@ -107,7 +107,7 @@ export const asyncRoutes = [
       },
       {
         path: 'demo',
-        redirect: 'demo/demos',
+        redirect: 'demo/demo001',
         name: 'demo',
         meta: {
           title: '测试',
@@ -348,20 +348,58 @@ export const asyncRoutes = [
               icon: 'icon-ceshi'
             },
             component: _import('demo/require与import语法')
+          },
+          {
+            path: 'demo023',
+            name: 'demo023',
+            redirect: 'demo023/demo023-1',
+            meta: {
+              title: '开发模式总结',
+              enTitle: 'demo023',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi',
+              submenu: true
+            },
+            component: _import('transfer'),
+            children: [
+              {
+                path: 'demo023-1',
+                name: 'demo023-1',
+                meta: {
+                  title: '策略模式',
+                  enTitle: 'demo023-1',
+                  role: [1, 2, 3],
+                  icon: 'icon-ceshi'
+                },
+                component: _import('demo/开发模式总结/策略模式')
+              },
+              {
+                path: 'demo023-2',
+                name: 'demo023-2',
+                meta: {
+                  title: '设计模式',
+                  enTitle: 'demo023-2',
+                  role: [1, 2, 3],
+                  icon: 'icon-ceshi'
+                },
+                component: _import('demo/开发模式总结/设计模式')
+              }
+            ]
           }
         ]
+      },
+      {
+        path: 'empty',
+        name: 'empty',
+        hidden: true,
+        meta: {
+          title: '',
+          enTitle: '',
+          role: [1, 2, 3]
+        },
+        component: resolve => require(['@page/empty'], resolve)
       }
     ]
-  },
-  {
-    path: '/empty',
-    name: 'empty',
-    meta: {
-      title: '',
-      enTitle: '',
-      role: [1, 2, 3]
-    },
-    component: resolve => require(['@page/empty'], resolve)
   },
   {
     path: '*',

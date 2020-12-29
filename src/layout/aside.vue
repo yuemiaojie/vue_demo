@@ -1,5 +1,5 @@
 <template>
-  <el-aside :width="$store.getters.sidebarStatus === '0' ? '150px' : '40px'" style="border-right: 1px solid #efefef;">
+  <el-aside :width="$store.getters.sidebarStatus === '0' ? '180px' : '40px'" style="border-right: 1px solid #efefef;">
     <layout-menu :routers="$store.getters.addRoutes.length > 0 ? $store.getters.addRoutes[0].children : []" :base-path="'/'" />
   </el-aside>
 </template>

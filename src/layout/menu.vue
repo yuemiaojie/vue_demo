@@ -1,6 +1,6 @@
 <template>
   <div id="layout-menu">
-    <el-menu :default-active="$route.name" :collapse="$store.getters.sidebarStatus === '1' ? true : false" :collapse-transition="false" mode="vertical">
+    <el-menu ref="elMenu" :default-active="$route.name" :collapse="$store.getters.sidebarStatus === '1' ? true : false" :collapse-transition="false" mode="vertical" unique-opened>
       <div v-for="(item, index) in routers" :key="index">
         <el-submenu v-if="item.meta.submenu" :index="item.name">
           <template slot="title">
@@ -8,16 +8,16 @@
             <span slot="title">{{ $store.getters.language === 'zh' ? item.meta.title : item.meta.enTitle }}</span>
           </template>
           <div v-for="(childItem, childIndex) in item.children" :key="childIndex">
-            <el-menu-item v-if="!item.hidden" :index="childItem.name" style="padding-left: 10px;" @click="toLink(resolvePath(item.path + '/' + childItem.path), childItem.name)">
+            <el-menu-item v-if="!childItem.hidden && !childItem.meta.submenu && (!childItem.children || !childItem.children.length)" :index="childItem.name" style="padding-left: 10px;" @click="toLink(resolvePath(item.path + '/' + childItem.path), childItem.name)">
               <p>
                 <i :class="'iconfont ' + childItem.meta.icon" />
                 <span>{{ $store.getters.language === 'zh' ? childItem.meta.title : childItem.meta.enTitle }}</span>
               </p>
             </el-menu-item>
-            <AsideMenus v-if="childItem.children && childItem.children.length > 0" :routers="childItem.children" :base-path="resolvePath(childItem.path)" />
+            <AsideMenus v-if="childItem.meta.submenu && childItem.children && childItem.children.length > 0" :routers="[childItem]" :base-path="resolvePath(item.path)" />
           </div>
         </el-submenu>
-        <div v-else>
+        <div v-else-if="!item.hidden">
           <el-menu-item :index="item.name" @click="toLink(resolvePath(item.path), item.name)">
             <i :class="'iconfont ' + item.meta.icon" />
             <span slot="title">{{ $store.getters.language === 'zh' ? item.meta.title : item.meta.enTitle }}</span>
@@ -53,7 +53,11 @@ export default {
   },
   created() {
   },
-  mounted() { },
+  mounted() {
+    setTimeout(() => {
+      this.$refs['elMenu'].open('summary')
+    }, 1000)
+  },
   methods: {
     resolvePath(routePath) {
       return path.resolve(this.basePath, routePath)
