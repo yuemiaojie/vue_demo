@@ -1,6 +1,6 @@
 <template>
-  <div id="layout-menu">
-    <el-menu ref="elMenu" :default-active="$route.name" :collapse="$store.getters.sidebarStatus === '1' ? true : false" :collapse-transition="false" mode="vertical" unique-opened>
+  <div class="layout-menu">
+    <el-menu ref="elMenu" :default-active="$route.name" :collapse="$store.getters.sidebarStatus === '1'" :collapse-transition="false" @close="menuCloseChange">
       <div v-for="(item, index) in routers" :key="index">
         <el-submenu v-if="item.meta.submenu" :index="item.name">
           <template slot="title">
@@ -54,27 +54,43 @@ export default {
   created() {
   },
   mounted() {
-    setTimeout(() => {
-      this.$refs['elMenu'].open('summary')
-    }, 1000)
+    if (this.$store.getters.sidebarStatus === '0') {
+      this.$route.matched.forEach(v => {
+        if (v.meta.submenu) {
+          this.$refs['elMenu'].openMenu(v.name, v.name)
+        }
+      })
+    }
   },
   methods: {
     resolvePath(routePath) {
       return path.resolve(this.basePath, routePath)
     },
     toLink(path, pathName) {
+      // this.$parent.$parent.openedMenus = []
+      // console.log(this.$refs['elMenu'].openedMenus)
+      if (this.$store.getters.sidebarStatus === '1') {
+        this.$route.matched.forEach((v, i) => {
+          if (v.meta.submenu) {
+            this.$parent
+          }
+        })
+      }
       if (this.$route.name === pathName) {
         this.$router.push('/empty')
       } else {
         this.$router.push(path)
       }
+    },
+    menuCloseChange(index, indexPath) {
+      console.log(index, indexPath)
     }
   }
 }
 </script>
 
 <style lang="scss">
-#layout-menu {
+.el-aside {
   .el-menu {
     border: none;
 
@@ -105,10 +121,7 @@ export default {
   }
 
   .el-menu.el-menu--collapse {
-    width: 40px;
-    .el-menu-item span,
-    .el-submenu > .el-submenu__title span,
-    .el-menu-item .el-submenu__icon-arrow,
+    .el-submenu > .el-submenu__title span[slot='title'],
     .el-submenu > .el-submenu__title .el-submenu__icon-arrow {
       display: none;
     }
@@ -118,5 +131,9 @@ export default {
       text-align: center;
     }
   }
+}
+
+.el-menu--collapse {
+  width: 100%;
 }
 </style>
