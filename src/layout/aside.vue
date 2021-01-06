@@ -1,15 +1,18 @@
 <template>
   <el-aside :width="$store.getters.sidebarStatus === '0' ? '180px' : '40px'" style="border-right: 1px solid #efefef;">
-    <layout-menu :routers="$store.getters.addRoutes.length > 0 ? $store.getters.addRoutes[0].children : []" :base-path="'/'" />
+    <el-menu :default-active="$route.name" :collapse="$store.getters.sidebarStatus === '1'" :collapse-transition="false">
+      <asideMenus :routers="$store.getters.addRoutes.length > 0 ? $store.getters.addRoutes[0].children : []" :base-path="'/'" />
+    </el-menu>
   </el-aside>
 </template>
 
 <script type="text/javascript">
-import layoutMenu from '@layout/menu'
+import asideMenus from '@layout/asideMenus'
+
 export default {
   name: 'Aside',
   components: {
-    layoutMenu
+    asideMenus
   },
   props: '',
   data() {
