@@ -16,6 +16,7 @@ import moment from 'moment'
 import Directives from '@/directives'
 // import loading from '@/components-config/loading'
 import Upload from '@/components-config/upload'
+import { resetRouter } from '@router'
 // import Mock from 'mockjs'
 // console.log()
 
@@ -26,21 +27,34 @@ Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
 import { initThemeColor } from './utils/themeColorClient'
 initThemeColor()
 
+const setCookies = {
+  userInfo: function () {
+    store.commit('user/SET_USERINFO', JSON.parse(cookie.get('userInfo')))
+    store.commit('permission/GENERATE_ROUTES', JSON.parse(userInfo).roles)
+    const addRoutes = store.getters.addRoutes
+    router.addRoutes(addRoutes)
+  },
+  sidebarStatus: function () {
+    store.commit('settings/SET_SETTINGS', { key: 'sidebarStatus', val: cookie.get('sidebarStatus') })
+  },
+  language: function () {
+    store.commit('settings/SET_SETTINGS', { key: 'language', val: cookie.get('language') })
+  }
+}
+
+const valiCookie = function (value, key) {
+  if (!value || !utils.hasOwn(setCookies, key)) return
+
+  setCookies[key]()
+}
+
 const userInfo = cookie.get('userInfo')
 const sidebarStatus = cookie.get('sidebarStatus')
 const language = cookie.get('language')
-if (sidebarStatus) {
-  store.commit('settings/SET_SETTINGS', { key: 'sidebarStatus', val: cookie.get('sidebarStatus') })
-}
-if (language) {
-  store.commit('settings/SET_SETTINGS', { key: 'language', val: cookie.get('language') })
-}
-if (userInfo) {
-  store.commit('user/SET_USERINFO', JSON.parse(cookie.get('userInfo')))
-  store.commit('permission/GENERATE_ROUTES', JSON.parse(userInfo).roles)
-  const addRoutes = store.getters.addRoutes
-  router.addRoutes(addRoutes)
-}
+
+valiCookie(userInfo, 'userInfo')
+valiCookie(sidebarStatus, 'sidebarStatus')
+valiCookie(language, 'language')
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
@@ -48,10 +62,14 @@ router.beforeEach((to, from, next) => {
     next()
   } else {
     const userInfo = cookie.get('userInfo')
-    if (userInfo) {
+    if (userInfo && utils.getType(JSON.parse(userInfo)) === 'obj' && userInfo !== '{}') {
       next()
     } else {
       next('/login')
+      cookie.remove('userInfo')
+      store.commit('permission/DESTROY_ROUTES')
+      store.commit('user/SET_USERINFO', {})
+      resetRouter()
     }
   }
 })

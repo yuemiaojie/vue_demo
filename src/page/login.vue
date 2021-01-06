@@ -88,6 +88,7 @@ export default {
                 cookie.remove('loginInfo')
               }
             }
+            console.log('userInfo', userInfo)
             cookie.set('userInfo', JSON.stringify(userInfo), { expires: 7 })
             this.$store.commit('permission/GENERATE_ROUTES', userInfo.roles)
             const addRoutes = this.$store.getters.addRoutes

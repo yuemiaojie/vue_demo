@@ -8,6 +8,7 @@ import cookie from 'js-cookie'
 import { resetRouter } from '@router'
 import store from '@store'
 import { Message } from 'element-ui'
+import utils from '@utils'
 
 axios.defaults.baseURL = baseURL
 axios.defaults.timeout = 1 * 10000
@@ -17,6 +18,23 @@ window._axiosPromiseArr = []
 // 请求拦截器
 axios.interceptors.request.use(
   config => {
+    // 如果你不是登录接口，判断cookie中是否携带userInfo，没有转登录页
+    if (config.url.indexOf('user') === -1) {
+      const userInfo = cookie.get('userInfo')
+      if (!userInfo || utils.getType(JSON.parse(userInfo)) !== 'obj' || userInfo === '{}' || !utils.hasOwn(JSON.parse(userInfo), 'token')) {
+        router.push('/login')
+        cookie.remove('userInfo')
+        store.commit('permission/DESTROY_ROUTES')
+        store.commit('user/SET_USERINFO', {})
+        resetRouter()
+
+        return config
+      }
+
+      // 每次请求发送token
+      config.headers['Authorization'] = JSON.parse(cookie.get('userInfo')).token
+    }
+
     if (config.headers.isEmpty) {
       config.baseURL = '/my_api/'
     }
@@ -41,8 +59,6 @@ axios.interceptors.request.use(
     removePeeding(requestData, isRequest, requestTime)
     // 保存该请求至`window._axiosPromiseArr`上
     config.cancelToken = new axios.CancelToken(cancel => window._axiosPromiseArr.push({ requestData, cancel, requestTime }))
-    // 每次请求发送token
-    config.headers['Authorization'] = window.localStorage.getItem('token')
     return config
   },
   error => Promise.error(error)

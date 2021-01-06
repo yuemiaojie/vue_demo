@@ -1,15 +1,20 @@
 <template>
-  <div id="home-wrap">
+  <main class="home-wrapper">
     <el-container :style="containerWrapStyle">
       <layout-aside />
       <el-container direction="vertical">
         <layoutHeader />
-        <el-main>
-          <router-view />
-        </el-main>
+        <el-scrollbar style="height:100%">
+          <el-main>
+            <keep-alive>
+              <router-view v-if="$route.meta.keepAlive && isRouterAlive" />
+            </keep-alive>
+            <router-view v-if="!$route.meta.keepAlive && isRouterAlive" />
+          </el-main>
+        </el-scrollbar>
       </el-container>
     </el-container>
-  </div>
+  </main>
 
 </template>
 
@@ -25,7 +30,14 @@ export default {
   props: '',
   data() {
     return {
-      containerWrapStyle: ''
+      containerWrapStyle: '',
+      isRouterAlive: true
+    }
+  },
+  // 这里注册后就可以通过子组件刷新页面了
+  provide() {
+    return {
+      reload: this.reload
     }
   },
   created() { },
@@ -56,6 +68,12 @@ export default {
         winHeight = document.body.clientHeight
       }
       return winHeight
+    },
+    reload() {
+      this.isRouterAlive = false
+      this.$nextTick(function () {
+        this.isRouterAlive = true
+      })
     }
   }
 }

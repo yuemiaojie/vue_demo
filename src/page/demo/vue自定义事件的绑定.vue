@@ -52,7 +52,9 @@ export default {
 
     }
   },
-  created() { },
+  created() {
+    console.log('进入页面了！！！')
+  },
   mounted() { },
   methods: {
     longpress() {
