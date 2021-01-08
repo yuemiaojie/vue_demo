@@ -396,7 +396,7 @@ export const asyncRoutes = [
               icon: 'icon-ceshi'
             },
             component: _import('demo/城市选择')
-          },
+          }
         ]
       },
       {

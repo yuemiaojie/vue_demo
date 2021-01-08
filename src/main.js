@@ -3,9 +3,10 @@ import App from './App'
 import router from './router'
 import store from '@/store/index.js'
 import api from './api'
-import backToTop from '@/components-config/back-top'
+import backToTop from '@/components_config/back-top'
 import * as filters from '@/filters/filters'
 import utils from '@utils'
+import validate from '@utils/validate'
 import log from '@utils/log'
 import cookie from 'js-cookie'
 import ELEMENT from 'element-ui'
@@ -14,8 +15,8 @@ import NProgress from 'nprogress'
 import VueI18n from 'vue-i18n'
 import moment from 'moment'
 import Directives from '@/directives'
-// import loading from '@/components-config/loading'
-import Upload from '@/components-config/upload'
+// import loading from '@/components_config/loading'
+import Upload from '@/components_config/upload'
 import { resetRouter } from '@router'
 // import Mock from 'mockjs'
 // console.log()
@@ -97,6 +98,7 @@ const { Loading, Message } = ELEMENT
 // 绑定全局
 Vue.prototype.$api = api
 Vue.prototype.$utils = utils
+Vue.prototype.$validate = validate
 Vue.prototype.$msg = opt => Message(opt)
 Vue.prototype.$loading =
   _ => Loading.service({
