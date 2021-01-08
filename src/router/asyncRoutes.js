@@ -385,7 +385,18 @@ export const asyncRoutes = [
                 component: _import('demo/开发模式总结/设计模式')
               }
             ]
-          }
+          },
+          {
+            path: 'demo024',
+            name: 'demo024',
+            meta: {
+              title: '城市选择',
+              enTitle: 'demo024',
+              role: [1, 2, 3],
+              icon: 'icon-ceshi'
+            },
+            component: _import('demo/城市选择')
+          },
         ]
       },
       {

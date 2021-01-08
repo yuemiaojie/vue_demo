@@ -106,7 +106,6 @@ export default {
     .el-submenu__title,
     .el-tooltip {
       padding: 0 10px !important;
-      text-align: center;
     }
   }
 }
@@ -116,9 +115,5 @@ export default {
   .el-tooltip {
     padding: 0 10px !important;
   }
-}
-
-.el-menu--collapse {
-  width: 100%;
 }
 </style>
